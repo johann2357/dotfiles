@@ -1,0 +1,3 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/johann/.dotfiles/.vim/bundle/flake8-vim.git/ftplugin/python/mccabe'
