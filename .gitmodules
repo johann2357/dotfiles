@@ -1,3 +1,6 @@
 [submodule ".vim/bundle/flake8-vim.git"]
 	path = .vim/bundle/flake8-vim.git
 	url = https://github.com/andviro/flake8-vim.git
+[submodule ".vim/bundle/vim-colors-solarized.git"]
+	path = .vim/bundle/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
