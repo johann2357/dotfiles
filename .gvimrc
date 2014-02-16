@@ -5,6 +5,7 @@ set guioptions-=l  " remove left-hand scroll bar
 set guioptions-=R  " remove left-hand scroll bar 
 set guioptions-=L  " remove left-hand scroll bar 
 set number
+set cursorline
 colorscheme solarized
 set background=light
 set guifont=DejaVu\ Sans\ Mono\ 10.5
