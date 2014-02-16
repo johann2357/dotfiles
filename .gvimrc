@@ -7,3 +7,4 @@ set guioptions-=L  " remove left-hand scroll bar
 set number
 colorscheme solarized
 set background=light
+set guifont=DejaVu\ Sans\ Mono\ 10.5
