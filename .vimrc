@@ -79,5 +79,14 @@ noremap <Leader>j <esc><c-w>j<CR>
 noremap <Leader>k <esc><c-w>k<CR>
 noremap <Leader>l <esc><c-w>l<CR>
 
+" Easier movement between buffers
+noremap <Leader>be <esc>:buffers<CR>:buffer<Space>
+noremap <Leader>bd <esc>:buffers<CR>:bdelete<Space>
+noremap <Leader>bd! <esc>:buffers<CR>:bdelete!<Space>
+noremap <Leader>q <esc>:bdelete<CR>
+noremap <Leader>q! <esc>:bdelete!<CR>
+noremap <Leader><Tab> <esc>:bnext<CR>
+noremap <Leader><S-Tab> <esc>:bprevious<CR>
+
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
