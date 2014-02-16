@@ -52,9 +52,9 @@ set winheight=666
 let mapleader = ","
 
 " Yank and paste from clipboard
-vnoremap <c-y> "+y
-nnoremap <c-p> "+p
-vnoremap <c-p> "+p
+vnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+vnoremap <Leader>p "+p
 
 " Select the last changed text
 nnoremap gp `[v`]
