@@ -1,4 +1,5 @@
 set nocompatible
+execute pathogen#infect()
 
 filetype on
 filetype plugin indent on
