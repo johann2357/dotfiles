@@ -15,8 +15,8 @@ set fileencoding=utf-8
 set encoding=utf-8
 
 " Block arrow keys
-no <down> <esc>:let @z=@"<CR>ddp<esc>:let @"=@z<CR>
-no <up> <esc>:let @z=@"<CR>ddkP<esc>:let @"=@z<CR>
+no <down> <Nop>
+no <up> <Nop>
 no <left> <Nop>
 no <right> <Nop>
 ino <down> <Nop>
