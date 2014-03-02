@@ -3,7 +3,7 @@
 	url = https://github.com/andviro/flake8-vim.git
 [submodule ".vim/bundle/vim-colors-solarized.git"]
 	path = .vim/bundle/vim-colors-solarized.git
-	url = https://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/johann2357/vim-colors-solarized.git
 [submodule ".vim/bundle/nerdtree.git"]
 	path = .vim/bundle/nerdtree.git
 	url = https://github.com/scrooloose/nerdtree.git
