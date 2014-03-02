@@ -36,7 +36,8 @@ set smarttab
 set smartindent
 
 " background
-set background=dark
+set background=light
+colorscheme solarized
 map <F10> :let &background = ( &background == "light"? "dark" : "light" )<CR>
 
 " Splits behavior
