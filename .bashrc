@@ -124,3 +124,11 @@ alias lf="ls -lah"
 
 #set 256 color if possible
 [[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
+
+#setting up java home
+#tar xvzf asdasd.tar.gz
+#JAVA_HOME=/home/johann/java
+#JDK_HOME=$JAVA_HOME
+#JRE_HOME=$JAVA_HOME/jre
+#PATH=$PATH:$JAVA_HOME/bin
+
