@@ -91,3 +91,4 @@ noremap <Leader><S-Tab> <esc>:bprevious<CR>
 
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType java setlocal expandtab shiftwidth=3 softtabstop=3
