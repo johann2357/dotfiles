@@ -81,6 +81,7 @@ noremap <Leader>k <esc><c-w>k<CR>
 noremap <Leader>l <esc><c-w>l<CR>
 
 " Easier movement between buffers
+noremap <Leader>bb <esc>:buffers<CR>
 noremap <Leader>be <esc>:buffers<CR>:buffer<Space>
 noremap <Leader>bd <esc>:buffers<CR>:bdelete<Space>
 noremap <Leader>bd! <esc>:buffers<CR>:bdelete!<Space>
