@@ -7,7 +7,7 @@
 [keybindings]
   switch_to_tab_9 = <Alt>9
   switch_to_tab_1 = <Alt>1
-  go_up = <Primary>k
+  go_up = <Alt>k
   switch_to_tab_10 = <Alt>0
   resize_up = <Primary><Shift>k
   resize_left = <Primary><Shift>h
@@ -15,11 +15,11 @@
   switch_to_tab_4 = <Alt>4
   switch_to_tab_6 = <Alt>6
   switch_to_tab_7 = <Alt>7
-  go_down = <Primary>j
+  go_down = <Alt>j
   switch_to_tab_5 = <Alt>5
   split_vert = <Alt>v
-  go_right = <Primary>l
-  go_left = <Primary>h
+  go_right = <Alt>l
+  go_left = <Alt>h
   switch_to_tab_2 = <Alt>2
   resize_right = <Primary><Shift>l
   resize_down = <Primary><Shift>j
