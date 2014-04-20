@@ -1,0 +1,10 @@
+With version 1.6.5 of Git and later, you can use:
+
+git clone --recursive git://github.com/foo/bar.git
+cd bar
+
+For already cloned repos, or older Git versions, just use:
+
+git clone git://github.com/foo/bar.git
+cd bar
+git submodule update --init --recursive
