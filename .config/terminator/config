@@ -37,7 +37,8 @@
     background_type = transparent
     use_system_font = False
     foreground_color = "#002b36"
-    font = DejaVu Sans Mono 10.5
+    show_titlebar = False
+    font = Fantasque Sans Mono 12
     background_color = "#f0f0f0"
     scrollback_infinite = True
   [[solarized-dark]]
