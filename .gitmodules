@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/Pychimp-vim.git"]
 	path = .vim/bundle/Pychimp-vim.git
 	url = https://github.com/johann2357/Pychimp-vim.git
+[submodule ".vim/bundle/vim-sol.git"]
+	path = .vim/bundle/vim-sol.git
+	url = https://github.com/johann2357/vim-sol.git
+[submodule ".vim/bundle/vim-luna.git"]
+	path = .vim/bundle/vim-luna.git
+	url = https://github.com/johann2357/vim-luna.git
