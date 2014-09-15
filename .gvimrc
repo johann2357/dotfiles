@@ -8,4 +8,4 @@ set number
 set cursorline
 colorscheme solarized
 set background=light
-set guifont=DejaVu\ Sans\ Mono\ 10.5
+set guifont=Fantasque\ Sans\ Mono\ 13

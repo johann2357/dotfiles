@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/vim-colorscheme-solarized.git"]
 	path = .vim/bundle/vim-colorscheme-solarized.git
 	url = https://github.com/johann2357/vim-colors-solarized
+[submodule ".vim/bundle/Pychimp-vim.git"]
+	path = .vim/bundle/Pychimp-vim.git
+	url = https://github.com/johann2357/Pychimp-vim.git
