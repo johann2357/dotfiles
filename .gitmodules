@@ -22,3 +22,24 @@
 [submodule ".vim/bundle/vim-luna.git"]
 	path = .vim/bundle/vim-luna.git
 	url = https://github.com/johann2357/vim-luna.git
+[submodule ".vim/bundle/vim-lucius.git"]
+	path = .vim/bundle/vim-lucius.git
+	url = https://github.com/jonathanfilip/vim-lucius
+[submodule ".vim/bundle/badwolf.git"]
+	path = .vim/bundle/badwolf.git
+	url = https://github.com/sjl/badwolf/
+[submodule ".vim/bundle/wombat256.git"]
+	path = .vim/bundle/wombat256.git
+	url = https://github.com/johann2357/wombat256.vim
+[submodule ".vim/bundle/wombat.git"]
+	path = .vim/bundle/wombat.git
+	url = https://github.com/vim-scripts/Wombat
+[submodule ".vim/bundle/monokai.git"]
+	path = .vim/bundle/monokai.git
+	url = https://github.com/johann2357/vim-monokai
+[submodule ".vim/bundle/vim-kolor.git"]
+	path = .vim/bundle/vim-kolor.git
+	url = https://github.com/zeis/vim-kolor
+[submodule ".vim/bundle/molokai.git"]
+	path = .vim/bundle/molokai.git
+	url = https://github.com/tomasr/molokai
