@@ -94,6 +94,9 @@ noremap <Leader>q! <esc>:bdelete!<CR>
 noremap <Leader><Tab> <esc>:bnext<CR>
 noremap <Leader><S-Tab> <esc>:bprevious<CR>
 
+" Always display status line (vim-airline)
+set laststatus=2
+
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType java setlocal expandtab shiftwidth=3 softtabstop=3

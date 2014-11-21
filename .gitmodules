@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/molokai.git"]
 	path = .vim/bundle/molokai.git
 	url = https://github.com/tomasr/molokai
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
