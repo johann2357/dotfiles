@@ -36,8 +36,11 @@ set smarttab
 set smartindent
 
 " background
-set background=light
-colorscheme solarized
+" set background=light
+" colorscheme solarized
+
+colorscheme wombat256mod
+set background=dark
 map <F10> :let &background = ( &background == "light"? "dark" : "light" )<CR>
 
 " Splits behavior
@@ -81,7 +84,8 @@ noremap <Leader>k <esc><c-w>k<CR>
 noremap <Leader>l <esc><c-w>l<CR>
 
 " Easier movement between buffers
-noremap <Leader>bb <esc>:buffers<CR>
+noremap <Leader>bl <esc>:buffers<CR>
+noremap <Leader>bb <esc>:b#<CR>
 noremap <Leader>be <esc>:buffers<CR>:buffer<Space>
 noremap <Leader>bd <esc>:buffers<CR>:bdelete<Space>
 noremap <Leader>bd! <esc>:buffers<CR>:bdelete!<Space>

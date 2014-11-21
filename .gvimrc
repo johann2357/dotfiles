@@ -6,6 +6,6 @@ set guioptions-=R  " remove left-hand scroll bar
 set guioptions-=L  " remove left-hand scroll bar 
 set number
 set cursorline
-colorscheme solarized
-set background=light
+colorscheme wombat256mod
+set background=dark
 set guifont=Fantasque\ Sans\ Mono\ 13
