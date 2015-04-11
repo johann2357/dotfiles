@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/johann/.dotfiles/.vim/bundle/flake8-vim.git/ftplugin/python/mccabe'
 let g:netrw_dirhist_2='/home/johann/Documents'
 let g:netrw_dirhist_3='/home/johann/Documents/bootstrap'
 let g:netrw_dirhist_4='/home/johann/Documents'
+let g:netrw_dirhist_5='/home/johann/Work/16tags-v3/app'

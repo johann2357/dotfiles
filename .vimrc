@@ -39,8 +39,8 @@ set smartindent
 " set background=light
 " colorscheme solarized
 
-colorscheme wombat256mod
-set background=dark
+colorscheme desert
+set background=light
 map <F10> :let &background = ( &background == "light"? "dark" : "light" )<CR>
 
 " Splits behavior
@@ -96,6 +96,9 @@ noremap <Leader><S-Tab> <esc>:bprevious<CR>
 
 " Always display status line (vim-airline)
 set laststatus=2
+
+" Ignore files !!
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*
 
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4

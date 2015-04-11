@@ -8,4 +8,4 @@ set number
 set cursorline
 colorscheme wombat256mod
 set background=dark
-set guifont=Fantasque\ Sans\ Mono\ 13
+set guifont=Fantasque\ Sans\ Mono\ 11
