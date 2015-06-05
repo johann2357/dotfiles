@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+[submodule ".vim/bundle/vim-less.git"]
+	path = .vim/bundle/vim-less.git
+	url = https://github.com/groenewege/vim-less.git

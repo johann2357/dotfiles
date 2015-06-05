@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/johann/.dotfiles/.vim/bundle/flake8-vim.git/ftplugin/python/mccabe'
 let g:netrw_dirhist_2='/home/johann/Documents'
 let g:netrw_dirhist_3='/home/johann/Documents/bootstrap'
 let g:netrw_dirhist_4='/home/johann/Documents'
 let g:netrw_dirhist_5='/home/johann/Work/16tags-v3/app'
+let g:netrw_dirhist_6='/home/johann/Documents/envs/checkersenv/ai_checkers/ai_checkers'
+let g:netrw_dirhist_7='/home/johann/Work/django181/lib/python2.7/site-packages/cms/migrations'
+let g:netrw_dirhist_8='/home/johann/Work/zertenv/zertifikate/static/imported_csvs'
+let g:netrw_dirhist_9='/home/johann/Work/finantial-projects-app/app'

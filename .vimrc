@@ -102,4 +102,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out
 
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType java setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType java setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType javascript setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType scss setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
