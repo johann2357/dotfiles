@@ -49,3 +49,9 @@
 [submodule ".vim/bundle/vim-less.git"]
 	path = .vim/bundle/vim-less.git
 	url = https://github.com/groenewege/vim-less.git
+[submodule ".vim/bundle/vim-virtualenv.git"]
+	path = .vim/bundle/vim-virtualenv.git
+	url = https://github.com/jmcantrell/vim-virtualenv.git
+[submodule ".vim/bundle/ropevim.git"]
+	path = .vim/bundle/ropevim.git
+	url = https://github.com/python-rope/ropevim.git

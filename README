@@ -8,3 +8,7 @@ For already cloned repos, or older Git versions, just use:
 git clone git://github.com/foo/bar.git
 cd bar
 git submodule update --init --recursive
+
+Requirements (install with pip)
+* rope
+* ropevim
