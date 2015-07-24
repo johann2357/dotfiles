@@ -9,6 +9,5 @@ git clone git://github.com/foo/bar.git
 cd bar
 git submodule update --init --recursive
 
-Requirements (install with pip)
-* rope
-* ropevim
+Requirements (install with pip globally)
+* jedi
