@@ -43,15 +43,15 @@
 [submodule ".vim/bundle/molokai.git"]
 	path = .vim/bundle/molokai.git
 	url = https://github.com/tomasr/molokai
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
 [submodule ".vim/bundle/vim-less.git"]
 	path = .vim/bundle/vim-less.git
 	url = https://github.com/groenewege/vim-less.git
 [submodule ".vim/bundle/vim-virtualenv.git"]
 	path = .vim/bundle/vim-virtualenv.git
 	url = https://github.com/jmcantrell/vim-virtualenv.git
-[submodule ".vim/bundle/ropevim.git"]
-	path = .vim/bundle/ropevim.git
-	url = https://github.com/python-rope/ropevim.git
+[submodule ".vim/bundle/vim-powerline.git"]
+	path = .vim/bundle/vim-powerline.git
+	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule ".vim/bundle/jevi-vim.git"]
+	path = .vim/bundle/jevi-vim.git
+	url = https://github.com/davidhalter/jedi-vim.git
