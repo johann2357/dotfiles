@@ -98,7 +98,7 @@ noremap <Leader><S-Tab> <esc>:bprevious<CR>
 set laststatus=2
 
 " Ignore files !!
-set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out,*/dist/*,*/platforms/*,*/www/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
 
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
