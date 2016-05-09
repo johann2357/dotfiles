@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/jevi-vim.git"]
 	path = .vim/bundle/jevi-vim.git
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule ".vim/bundle/vim-better-whitespace.git"]
+	path = .vim/bundle/vim-better-whitespace.git
+	url = git://github.com/ntpeters/vim-better-whitespace.git
