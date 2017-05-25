@@ -98,12 +98,14 @@ noremap <Leader><S-Tab> <esc>:bprevious<CR>
 set laststatus=2
 
 " Ignore files !!
-set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out,*/dist/*,*/platforms/*,*/www/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out,*/dist/*,*/platforms/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
 
 " Python settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType python map <buffer> <c-s> :w<esc>:call Flake8()<CR>
+
 autocmd FileType java setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType javascript setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType scss setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
