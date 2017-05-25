@@ -11,3 +11,4 @@ git submodule update --init --recursive
 
 Requirements (install with pip globally)
 * jedi
+* flake8
