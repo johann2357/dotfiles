@@ -6,6 +6,8 @@ Here you can find my dotfiles.
     * macvim as GUI (more than 256 colors)
   * Caveat:
     * Plugin `command-t` might be tricky to install (but it's worth it)
+  * WIP:
+    * Improving highlight for Python
 
 - fonts
   * Powerline (for vim usage)
