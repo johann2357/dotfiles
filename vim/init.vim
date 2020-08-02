@@ -9,8 +9,9 @@ call plug#begin(plugged_path)
 Plug 'johann2357/onehalf', {'rtp': 'vim/', 'branch': 'python-improvements'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'wincent/command-t'
 Plug 'johann2357/python-mode', {'for': 'python', 'branch': 'improvements'}
 call plug#end()
 
@@ -99,6 +100,7 @@ nnoremap <Leader>9 :buffer 9<CR>
 " python-mode
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 1
 
 " NERDTreeToggle
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.swp$']

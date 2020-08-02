@@ -1,14 +1,11 @@
-With version 1.6.5 of Git and later, you can use:
+Here you can find my dotfiles.
 
-git clone --recursive git://github.com/foo/bar.git
-cd bar
+- vim
+  * My setup is:
+    * neovim with iTerm
+    * macvim as GUI (more than 256 colors)
+  * Caveat:
+    * Plugin `command-t` might be tricky to install (but it's worth it)
 
-For already cloned repos, or older Git versions, just use:
-
-git clone git://github.com/foo/bar.git
-cd bar
-git submodule update --init --recursive
-
-Requirements (install with pip globally)
-* jedi
-* flake8
+- fonts
+  * Powerline (for vim usage)
