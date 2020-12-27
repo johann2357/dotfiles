@@ -6,7 +6,7 @@ endif
 
 " Plugins
 call plug#begin(plugged_path)
-Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'johann2357/vim-dracula', {'as': 'dracula', 'branch': 'johann2357'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
@@ -36,7 +36,7 @@ set smarttab
 set smartindent
 
 " fold off
-set foldlevelstart=1
+set nofoldenable
 
 " Set Leader Key
 let mapleader = ","
@@ -148,7 +148,7 @@ if has("gui_running")
     set guifont=Menlo\ for\ Powerline:h16
     set background=dark
     colorscheme dracula
-    let g:airline_theme='dark_minimal'
+    let g:airline_theme='dracula'
 else
     " Colorscheme
     let iterm_profile = $ITERM_PROFILE
@@ -157,7 +157,7 @@ else
     if iterm_profile == "Dark"
         set background=dark
         colorscheme dracula
-        let g:airline_theme='dark_minimal'
+        let g:airline_theme='dracula'
     else
         set background=light
         colorscheme morning
