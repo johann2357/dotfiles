@@ -123,12 +123,13 @@ let g:pymode_options_max_line_length = 120
 " Ctrl+s to save running checking lint and regenerate rope
 autocmd FileType python map <buffer> <c-s> :w<esc>:call pymode#lint#check()<esc>:call pymode#rope#regenerate()<CR>
 
+" conda settings
+let g:conda_startup_msg_suppress = 1
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-
 
 " Languages settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
