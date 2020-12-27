@@ -6,13 +6,14 @@ endif
 
 " Plugins
 call plug#begin(plugged_path)
-Plug 'johann2357/onehalf', {'rtp': 'vim/', 'branch': 'python-improvements'}
+Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'wincent/command-t'
-Plug 'johann2357/python-mode', {'for': 'python', 'branch': 'improvements'}
+Plug 'cjrh/vim-conda', {'for': 'python'}
+Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
 call plug#end()
 
 filetype on
@@ -34,6 +35,9 @@ set expandtab
 set smarttab
 set smartindent
 
+" fold off
+set foldlevelstart=1
+
 " Set Leader Key
 let mapleader = ","
 
@@ -50,7 +54,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Ignore files !!
-set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/media/*,*.out,*/dist/*,*/platforms/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/__pycache__/*,*/media/*,*.out,*/dist/*,*/platforms/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
 
 " Adopted from https://gist.github.com/celso/6cefedb9fce92827ee38e8f7411b8b30
 set ruler               " Show the line and column numbers of the cursor.
@@ -79,9 +83,9 @@ noremap <Leader>bl <esc>:buffers<CR>
 noremap <Leader>bb <esc>:b#<CR>
 noremap <Leader>be <esc>:buffers<CR>:buffer<Space>
 noremap <Leader>bd <esc>:buffers<CR>:bdelete<Space>
-noremap <Leader>bd! <esc>:buffers<CR>:bdelete!<Space>
+noremap <Leader>!bd <esc>:buffers<CR>:bdelete!<Space>
 noremap <Leader>q <esc>:bdelete<CR>
-noremap <Leader>q! <esc>:bdelete!<CR>
+noremap <Leader>!q <esc>:bdelete!<CR>
 noremap <Leader><Tab> <esc>:bnext<CR>
 noremap <Leader><S-Tab> <esc>:bprevious<CR>
 nnoremap <Leader>1 :buffer 1<CR>
@@ -98,21 +102,33 @@ nnoremap <Leader>9 :buffer 9<CR>
 " PLUGINS
 
 " python-mode
+set completeopt=menuone,noinsert
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
+let g:pymode_virtualenv = 1
 
-" NERDTreeToggle
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.swp$']
-nnoremap <Leader>n :NERDTreeToggle<CR>
+let g:pymode_rope = 1
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_completion_bind = '<Leader-Space>'
+let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_rope_goto_definition_bind = '<Leader>g'
+let g:pymode_rope_show_doc_bind = '<Leader>d'
+
+" TODO: create a flake8 plugin
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_ignore = ["E501","B950","D100","D102","D104","D107","D204","D401","E501","E999","Q000",]
+let g:pymode_rope_regenerate_on_write = 0
+let g:pymode_options_max_line_length = 120
+" Ctrl+s to save running checking lint and regenerate rope
+autocmd FileType python map <buffer> <c-s> :w<esc>:call pymode#lint#check()<esc>:call pymode#rope#regenerate()<CR>
+
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
-" flake8
-autocmd FileType python map <buffer> <c-s> :w<esc>:call flake8#Flake8()<CR>
 
 " Languages settings
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
@@ -131,8 +147,8 @@ set cc=120
 if has("gui_running")
     set guifont=Menlo\ for\ Powerline:h16
     set background=dark
-    colorscheme onehalfdarkvivid
-    let g:airline_theme='onehalfdark'
+    colorscheme dracula
+    let g:airline_theme='dark_minimal'
 else
     " Colorscheme
     let iterm_profile = $ITERM_PROFILE
@@ -140,11 +156,12 @@ else
     set mouse=a
     if iterm_profile == "Dark"
         set background=dark
-        colorscheme onehalfdarkvivid
-        let g:airline_theme='onehalfdark'
+        colorscheme dracula
+        let g:airline_theme='dark_minimal'
     else
         set background=light
-        colorscheme onehalflight
-        let g:airline_theme='onehalflight'
+        colorscheme morning
+        let g:airline_theme='papercolor'
     endif
 endif
+

@@ -5,6 +5,7 @@
 
 ## Link .gvimrc
 `ln -s $PWD/init.vim $HOME/.vimrc`
+`ln -s $PWD/after $HOME/.vim/after`
 
 ## Open and Install pluggins
 `mvim`

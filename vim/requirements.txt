@@ -1,3 +1,2 @@
-jedi
 neovim
 pyflakes
