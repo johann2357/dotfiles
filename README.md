@@ -1,6 +1,16 @@
 # dotfiles
 
-## vim
+Always improving :)
+
+## neovim
+  * Config:
+    * You can find the `.config/nvim/ini.vim` [here](https://github.com/johann2357/dotfiles/blob/master/neovim/init.vim).
+  * Setup:
+    * [neovim](https://github.com/johann2357/dotfiles/blob/master/neovim/README.md) with iTerm.
+  * Caveat:
+    * Requires [neovim nightly](https://github.com/neovim/neovim/releases/tag/nightly).
+
+## vim (deprecated)
   * Config:
     * You can find the `.vimrc/.gvimrc` [here](https://github.com/johann2357/dotfiles/blob/master/vim/init.vim).
   * Setup:
