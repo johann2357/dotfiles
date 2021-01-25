@@ -63,6 +63,13 @@ set splitright          " Vertical split to right of current.
 set showcmd             " Show me what I'm typing
 set showmode            " Show current mode.
 
+" Custom
+set nu
+set nowrap
+set termguicolors
+set relativenumber
+set scrolloff=6
+
 " Easier movement between splits
 noremap <Leader>h <esc><c-w>h<CR>
 noremap <Leader>j <esc><c-w>j<CR>
