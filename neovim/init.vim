@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
+Plug 'johann2357/nvim-smartbufs'
 " <telescope>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -90,18 +91,18 @@ noremap <Leader>q :bdelete<CR>
 noremap <Leader>!q :bdelete!<CR>
 noremap <Leader><Tab> :bnext<CR>
 noremap <Leader><S-Tab> :bprevious<CR>
-nnoremap <Leader>1 :buffer 1<CR>
-nnoremap <Leader>2 :buffer 2<CR>
-nnoremap <Leader>3 :buffer 3<CR>
-nnoremap <Leader>4 :buffer 4<CR>
-nnoremap <Leader>5 :buffer 5<CR>
-nnoremap <Leader>6 :buffer 6<CR>
-nnoremap <Leader>7 :buffer 7<CR>
-nnoremap <Leader>8 :buffer 8<CR>
-nnoremap <Leader>9 :buffer 9<CR>
-
 
 " PLUGINS
+
+" nvim-smartbufs
+nnoremap <Leader>1 :lua require("nvim-smartbufs").open_n_active_buffer(1)<CR>
+nnoremap <Leader>2 :lua require("nvim-smartbufs").open_n_active_buffer(2)<CR>
+nnoremap <Leader>3 :lua require("nvim-smartbufs").open_n_active_buffer(3)<CR>
+nnoremap <Leader>4 :lua require("nvim-smartbufs").open_n_active_buffer(4)<CR>
+nnoremap <Leader>5 :lua require("nvim-smartbufs").open_n_active_buffer(5)<CR>
+nnoremap <Leader>6 :lua require("nvim-smartbufs").open_n_active_buffer(6)<CR>
+nnoremap <Leader>7 :lua require("nvim-smartbufs").open_n_active_buffer(7)<CR>
+nnoremap <Leader>8 :lua require("nvim-smartbufs").open_n_active_buffer(8)<CR>
 
 " python-mode
 set completeopt=menuone,noinsert
@@ -153,12 +154,16 @@ augroup lang_settings
   autocmd FileType scss setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
+  autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
 augroup END
 
 set laststatus=2
 
 " Splits behavior
 set cc=120
+
+" Set mouse in normal mode
+set mouse=n
 
 set background=dark
 colorscheme dracula
