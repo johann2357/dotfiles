@@ -155,6 +155,7 @@ augroup lang_settings
   autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
+  autocmd FileType javascriptreact setlocal noexpandtab shiftwidth=2 tabstop=2
 augroup END
 
 set laststatus=2
