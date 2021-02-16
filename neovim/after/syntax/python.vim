@@ -1,7 +1,8 @@
 syn keyword pythonBuiltinConst True False None
+syn keyword pythonSelf self cls
 syn match pythonFunctionCall "\zs\(\k\w*\)*\s*\ze("
 syn match pythonFunctionKwarg "\zs\(\k\w*\)\ze="
-syn match pythonGlobalVar "\zs\([A-Z][A-Z0-9_]\+\)\ze"
+" syn match pythonGlobalVar "\zs\([A-Z][A-Z0-9_]\+\)\ze"
 
 hi! link pythonExClass DraculaCyanItalic
 hi! link pythonBuiltinFunc DraculaCyanItalic
