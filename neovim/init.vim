@@ -108,12 +108,6 @@ nnoremap <Leader>6 :lua require("nvim-smartbufs").open_n_active_buffer(6)<CR>
 nnoremap <Leader>7 :lua require("nvim-smartbufs").open_n_active_buffer(7)<CR>
 nnoremap <Leader>8 :lua require("nvim-smartbufs").open_n_active_buffer(8)<CR>
 
-" TODO: create a flake8 plugin
-" let g:pymode_lint_on_write = 0
-" let g:pymode_lint_ignore = ["E501","B950","D100","D102","D104","D107","D204","D401","E501","E999","Q000",]
-" let g:pymode_rope_regenerate_on_write = 0
-" let g:pymode_options_max_line_length = 120
-
 " conda settings
 let g:conda_startup_msg_suppress = 1
 
@@ -164,24 +158,18 @@ lspconfig.pyls.setup{
 EOF
 " lua require'lspconfig'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
 
-" Ctrl+s to save running checking lint
-augroup python_stuff
-  autocmd!
-  " autocmd FileType python map <buffer> <c-s> :w<esc>:call pymode#lint#check()<CR>
-augroup END
-
 " Languages settings
 augroup lang_settings
   autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType java setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType scss setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType javascriptreact setlocal noexpandtab shiftwidth=2 tabstop=2
+  autocmd FileType javascript setlocal noexpandtab shiftwidth=2 softtabstop=2
 augroup END
 
 set laststatus=2
