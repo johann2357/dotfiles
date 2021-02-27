@@ -16,3 +16,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 
 # Install requirements
 pip install -r requirements.txt
+
+# TODO: Install pipx requirements (manually for now)
+pipx install 'python-language-server[all]'

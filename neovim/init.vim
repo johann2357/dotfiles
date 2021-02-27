@@ -8,8 +8,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
-Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
 Plug 'johann2357/nvim-smartbufs'
+" <lsp>
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 " <telescope>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -65,6 +68,7 @@ set showcmd             " Show me what I'm typing
 set showmode            " Show current mode.
 
 " Custom
+set signcolumn=no
 set nu
 set nowrap
 set termguicolors
@@ -104,26 +108,6 @@ nnoremap <Leader>6 :lua require("nvim-smartbufs").open_n_active_buffer(6)<CR>
 nnoremap <Leader>7 :lua require("nvim-smartbufs").open_n_active_buffer(7)<CR>
 nnoremap <Leader>8 :lua require("nvim-smartbufs").open_n_active_buffer(8)<CR>
 
-" python-mode
-set completeopt=menuone,noinsert
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_virtualenv = 1
-
-let g:pymode_rope = 1
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_completion_bind = '<Leader-n>'
-let g:pymode_rope_goto_definition_cmd = 'e'
-let g:pymode_rope_goto_definition_bind = '<Leader>g'
-let g:pymode_rope_show_doc_bind = '<Leader>d'
-
-" TODO: create a flake8 plugin
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_ignore = ["E501","B950","D100","D102","D104","D107","D204","D401","E501","E999","Q000",]
-let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_options_max_line_length = 120
-
 " conda settings
 let g:conda_startup_msg_suppress = 1
 
@@ -138,24 +122,54 @@ lua require('telescope').setup({defaults = {file_sorter = require('telescope.sor
 nnoremap <leader>t :lua require('telescope.builtin').git_files()<CR>
 nnoremap <Leader>f :lua require('telescope.builtin').find_files()<CR>
 
-" Ctrl+s to save running checking lint and regenerate rope
-augroup python_stuff
-  autocmd!
-  autocmd FileType python map <buffer> <c-s> :w<esc>:call pymode#lint#check()<esc>:call pymode#rope#regenerate()<CR>
-augroup END
+" LSP settings
+set completeopt=menuone,noinsert,noselect
+
+nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
+nnoremap <leader>vsh :lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>vrr :lua vim.lsp.buf.references()<CR>
+nnoremap <leader>vrn :lua vim.lsp.buf.rename()<CR>
+nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_enable_auto_popup = 0
+imap <silent> <c-n> <Plug>(completion_trigger)
+imap <silent> <c-p> <Plug>(completion_trigger)
+
+" https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls
+" TODO: maybe move this config to a different file? with all lsp?
+lua << EOF
+local lspconfig = require'lspconfig'
+lspconfig.pyls.setup{
+  on_attach=require'completion'.on_attach;
+  settings={
+    pyls={
+      plugins={
+        pycodestyle={
+          maxLineLength=120;
+        }
+      }
+    }
+  }
+}
+EOF
+" lua require'lspconfig'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
 
 " Languages settings
 augroup lang_settings
   autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType java setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType css setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType scss setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType javascriptreact setlocal noexpandtab shiftwidth=2 tabstop=2
+  autocmd FileType javascript setlocal noexpandtab shiftwidth=2 softtabstop=2
 augroup END
 
 set laststatus=2
