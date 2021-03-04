@@ -136,8 +136,8 @@ nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_enable_auto_popup = 0
-imap <silent> <c-n> <Plug>(completion_trigger)
-imap <silent> <c-p> <Plug>(completion_trigger)
+imap <silent> <c-j> <Plug>(completion_trigger)
+imap <silent> <c-k> <Plug>(completion_trigger)
 
 " https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls
 " TODO: maybe move this config to a different file? with all lsp?
