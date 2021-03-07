@@ -77,10 +77,6 @@ set relativenumber
 set scrolloff=6
 
 " Easier movement between splits
-noremap <Leader>h <esc><c-w>h<CR>
-noremap <Leader>j <esc><c-w>j<CR>
-noremap <Leader>k <esc><c-w>k<CR>
-noremap <Leader>l <esc><c-w>l<CR>
 tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
@@ -94,20 +90,20 @@ noremap <Leader>bd :buffers<CR>:bdelete<Space>
 noremap <Leader>!bd :buffers<CR>:bdelete!<Space>
 noremap <Leader>q :bdelete<CR>
 noremap <Leader>!q :bdelete!<CR>
-noremap <Leader><Tab> :bnext<CR>
-noremap <Leader><S-Tab> :bprevious<CR>
 
 " PLUGINS
 
 " nvim-smartbufs
-nnoremap <Leader>1 :lua require("nvim-smartbufs").open_n_active_buffer(1)<CR>
-nnoremap <Leader>2 :lua require("nvim-smartbufs").open_n_active_buffer(2)<CR>
-nnoremap <Leader>3 :lua require("nvim-smartbufs").open_n_active_buffer(3)<CR>
-nnoremap <Leader>4 :lua require("nvim-smartbufs").open_n_active_buffer(4)<CR>
-nnoremap <Leader>5 :lua require("nvim-smartbufs").open_n_active_buffer(5)<CR>
-nnoremap <Leader>6 :lua require("nvim-smartbufs").open_n_active_buffer(6)<CR>
-nnoremap <Leader>7 :lua require("nvim-smartbufs").open_n_active_buffer(7)<CR>
-nnoremap <Leader>8 :lua require("nvim-smartbufs").open_n_active_buffer(8)<CR>
+nnoremap <Leader>1 :lua require("nvim-smartbufs").open_n_buffer(1)<CR>
+nnoremap <Leader>2 :lua require("nvim-smartbufs").open_n_buffer(2)<CR>
+nnoremap <Leader>3 :lua require("nvim-smartbufs").open_n_buffer(3)<CR>
+nnoremap <Leader>4 :lua require("nvim-smartbufs").open_n_buffer(4)<CR>
+nnoremap <Leader>5 :lua require("nvim-smartbufs").open_n_buffer(5)<CR>
+nnoremap <Leader>6 :lua require("nvim-smartbufs").open_n_buffer(6)<CR>
+nnoremap <Leader>7 :lua require("nvim-smartbufs").open_n_buffer(7)<CR>
+nnoremap <Leader>8 :lua require("nvim-smartbufs").open_n_buffer(8)<CR>
+nnoremap <Leader><Tab> :lua require("nvim-smartbufs").open_next_buffer()<CR>
+nnoremap <Leader><S-Tab> :lua require("nvim-smartbufs").open_prev_buffer()<CR>
 
 " conda settings
 let g:conda_startup_msg_suppress = 1
