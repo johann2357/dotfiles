@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -f ~/.tmux.conf
+ln -s ~/Code/dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# Install xclip beforehand

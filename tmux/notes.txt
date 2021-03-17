@@ -1,0 +1,11 @@
+tmux ls     # list sessions
+tmux a -t 1 # tmux attach to target 1
+
+prefix + c  # New window
+prefix + (  # Between sessions
+prefix + n  # Between windows
+prefix + [  # Move vi mode
+prefix + w  # visual explorer
+  # To close a session in visual explorer -> hit `x`
+
+install xclip to copy and paste
