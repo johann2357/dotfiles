@@ -133,8 +133,7 @@ nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_enable_auto_popup = 0
-imap <silent> <c-j> <Plug>(completion_trigger)
-imap <silent> <c-k> <Plug>(completion_trigger)
+imap <silent> <c-n> <Plug>(completion_trigger)
 
 " https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls
 " TODO: maybe move this config to a different file? with all lsp?
@@ -166,7 +165,7 @@ augroup lang_settings
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType javascriptreact setlocal noexpandtab shiftwidth=2 tabstop=2
-  autocmd FileType javascript setlocal noexpandtab shiftwidth=2 softtabstop=2
+  autocmd FileType javascript setlocal noexpandtab shiftwidth=2 tabstop=2
 augroup END
 
 set laststatus=2
