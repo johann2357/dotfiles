@@ -3,11 +3,15 @@ let plugged_path = '~/.config/nvim/plugged'
 " Plugins
 call plug#begin(plugged_path)
 Plug 'johann2357/vim-dracula', {'as': 'dracula', 'branch': 'johann2357'}
+" airline to visualize open buffers
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" tpope
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
+" python
 Plug 'cjrh/vim-conda', {'for': 'python'}
+" tailored plugins
 Plug 'johann2357/nvim-smartbufs'
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
@@ -52,10 +56,6 @@ vnoremap <Leader>p "+p
 
 " Select the last changed text
 nnoremap gp `[v`]
-
-" Better indentation
-vnoremap < <gv
-vnoremap > >gv
 
 " Ignore files !!
 set wildignore+=*/tmp/*,*.so,*.swp,*.pyc,*/__pycache__/*,*/media/*,*.out,*/dist/*,*/platforms/*,*/test/*,*/node_modules/*,*/hooks*/,*/bower_components/*,*/plugins/*
@@ -172,9 +172,6 @@ set laststatus=2
 
 " Splits behavior
 set cc=120
-
-" Set mouse in normal mode
-set mouse=n
 
 set background=dark
 colorscheme dracula
