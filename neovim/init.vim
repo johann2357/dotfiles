@@ -76,6 +76,9 @@ set termguicolors
 set relativenumber
 set scrolloff=6
 
+" Quick nohlsearch
+nnoremap <Leader><Esc> :noh<CR>
+
 " Easier movement between splits
 tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
