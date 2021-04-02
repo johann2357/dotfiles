@@ -3,9 +3,7 @@ let plugged_path = '~/.config/nvim/plugged'
 " Plugins
 call plug#begin(plugged_path)
 Plug 'johann2357/vim-dracula', {'as': 'dracula', 'branch': 'johann2357'}
-" airline to visualize open buffers
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ojroques/nvim-hardline'
 " tpope
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
@@ -88,15 +86,6 @@ tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
-" Easier movement between buffers
-noremap <Leader>bl :buffers<CR>
-noremap <Leader>bb :b#<CR>
-noremap <Leader>be :buffers<CR>:buffer<Space>
-noremap <Leader>bd :buffers<CR>:bdelete<Space>
-noremap <Leader>!bd :buffers<CR>:bdelete!<Space>
-noremap <Leader>q :bdelete<CR>
-noremap <Leader>!q :bdelete!<CR>
-
 " PLUGINS
 
 " nvim-smartbufs
@@ -115,14 +104,19 @@ nnoremap <Leader>c3 :lua require("nvim-smartbufs").goto_terminal(3)<CR>
 nnoremap <Leader>c4 :lua require("nvim-smartbufs").goto_terminal(4)<CR>
 nnoremap <Leader><Tab> :lua require("nvim-smartbufs").goto_next_buffer()<CR>
 nnoremap <Leader><S-Tab> :lua require("nvim-smartbufs").goto_prev_buffer()<CR>
+nnoremap <Leader>qq :lua require("nvim-smartbufs").close_current_buffer()<CR>
+nnoremap <Leader>q1 :lua require("nvim-smartbufs").close_buffer(1)<CR>
+nnoremap <Leader>q2 :lua require("nvim-smartbufs").close_buffer(2)<CR>
+nnoremap <Leader>q3 :lua require("nvim-smartbufs").close_buffer(3)<CR>
+nnoremap <Leader>q4 :lua require("nvim-smartbufs").close_buffer(4)<CR>
+nnoremap <Leader>q5 :lua require("nvim-smartbufs").close_buffer(5)<CR>
+nnoremap <Leader>q6 :lua require("nvim-smartbufs").close_buffer(6)<CR>
+nnoremap <Leader>q7 :lua require("nvim-smartbufs").close_buffer(7)<CR>
+nnoremap <Leader>q8 :lua require("nvim-smartbufs").close_buffer(8)<CR>
+nnoremap <Leader>q9 :lua require("nvim-smartbufs").close_buffer(9)<CR>
 
 " conda settings
 let g:conda_startup_msg_suppress = 1
-
-" airline settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
 
 " telescope settings
 lua require('telescope').setup({defaults = {file_sorter = require('telescope.sorters').get_fzy_sorter}})
@@ -165,6 +159,15 @@ lspconfig.pyls.setup{
 EOF
 " lua require'lspconfig'.sumneko_lua.setup{ on_attach=require'completion'.on_attach }
 
+" FIXME: start spliting this into multiple files!!!! :(
+" Hardline
+lua << EOF
+require('hardline').setup {
+  bufferline = true,
+  theme = 'nord'
+}
+EOF
+
 " Languages settings
 augroup lang_settings
   autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
@@ -186,4 +189,3 @@ set cc=120
 
 set background=dark
 colorscheme dracula
-let g:airline_theme='dracula'
