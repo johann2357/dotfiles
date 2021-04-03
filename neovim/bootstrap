@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 
-# Adapted from: ThePrimeagen
+mkdir -p ~/.config/nvim/
 
-mkdir -p ~/.config/nvim/plugin
-mkdir -p ~/.config/nvim/after/syntax
-
-# link wholesale
-for f in `find . -regex ".*\.vim$"`; do
-    rm -rf ~/.config/nvim/$f
-    ln -s ~/Code/dotfiles/neovim/$f ~/.config/nvim/$f
+to_link=("init.vim"  "lua"  "plugin"  "after")
+ 
+for elem in ${to_link[*]}; do
+    rm -rf ~/.config/nvim/$elem
+    ln -s ~/Code/dotfiles/neovim/$elem ~/.config/nvim/$elem
+    echo $val1
 done
 
 # Install Plug
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ ! -f "~/.config/nvim/autoload/plug.vim" ]; then
+    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # Install requirements
 pip install -r requirements.txt
 
-# TODO: Install pipx requirements (manually for now)
+# Required for LSP
 pipx install 'python-language-server[all]'
