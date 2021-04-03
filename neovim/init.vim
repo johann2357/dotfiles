@@ -21,7 +21,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 " custom plugins
 Plug 'johann2357/nvim-smartbufs'
-Plug 'johann2357/nvim-hardline', {'branch': 'main'}
+Plug 'johann2357/nvim-hardline', {'branch': 'custom-bufferline'}
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'

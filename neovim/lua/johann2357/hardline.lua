@@ -1,4 +1,4 @@
 require("hardline").setup {
     bufferline = true,
-    theme = "nord"
+    theme = "gruvbox"
 }
