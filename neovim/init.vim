@@ -1,5 +1,3 @@
-set path+=**
-
 " Ingore files
 set wildignore+=*.so
 set wildignore+=*.swp
@@ -21,7 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 " python
 Plug 'cjrh/vim-conda', {'for': 'python'}
-" tailored plugins
+" custom plugins
 Plug 'johann2357/nvim-smartbufs'
 Plug 'johann2357/vim-dracula', {'as': 'dracula', 'branch': 'johann2357'}
 Plug 'ojroques/nvim-hardline'
@@ -84,6 +82,3 @@ augroup END
 
 " Plugins
 lua require("johann2357")
-
-" conda
-let g:conda_startup_msg_suppress = 1

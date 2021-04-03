@@ -22,7 +22,7 @@ set laststatus=2
 set cc=120
 set ruler
 set nofoldenable
-set signcolumn=yes
+set signcolumn=no
 set nu
 set relativenumber
 set nowrap
