@@ -21,8 +21,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 " custom plugins
 Plug 'johann2357/nvim-smartbufs'
-Plug 'johann2357/vim-dracula', {'as': 'dracula', 'branch': 'johann2357'}
-Plug 'ojroques/nvim-hardline'
+Plug 'johann2357/nvim-hardline', {'branch': 'main'}
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -32,6 +31,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" colorscheme
+Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 filetype on
