@@ -1,6 +1,6 @@
 require("hardline").setup {
     bufferline = true,
-    theme = "gruvbox",
+    theme = "gruvbox_minimal_dark",
     sections = {
         {class = 'mode', item = require('hardline.parts.mode').get_item},
         {class = 'high', item = require('hardline.parts.git').get_item, hide = 80},
