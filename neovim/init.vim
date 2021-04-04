@@ -21,7 +21,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 " custom plugins
 Plug 'johann2357/nvim-smartbufs'
-Plug 'johann2357/nvim-hardline', {'branch': 'custom-bufferline'}
+Plug 'johann2357/nvim-hardline', {'branch': 'develop'}
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -54,10 +54,9 @@ nnoremap gp `[v`]
 " Quick nohlsearch
 nnoremap <Leader><Esc> :noh<CR>
 
-" To normal mode
+" Terminal mappings
 tnoremap <C-w>w <C-\><C-n>
-
-" Easier movement between splits
+tnoremap <C-w>c <C-\><C-n><C-w>c
 tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k

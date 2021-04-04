@@ -1,15 +1,19 @@
 require("hardline").setup {
+    theme = "gruvbox_minimal",
     bufferline = true,
-    theme = "gruvbox_minimal_dark",
+    bufferline_settings = {
+        exclude_terminal = true,
+        show_numbers = true,
+    },
     sections = {
         {class = 'mode', item = require('hardline.parts.mode').get_item},
         {class = 'high', item = require('hardline.parts.git').get_item, hide = 80},
         '%<',
         {class = 'med', item = require('hardline.parts.filename').get_item},
         {class = 'med', item ='%='},
-        -- {class = 'low', item = require('hardline.parts.wordcount').get_item, hide = 80},
         {class = 'error', item = require('hardline.parts.lsp').get_error},
         {class = 'warning', item = require('hardline.parts.lsp').get_warning},
         {class = 'warning', item = require('hardline.parts.whitespace').get_item},
+        {class = 'low', item = require('hardline.parts.line').get_item, hide = 80},
     },
 }
