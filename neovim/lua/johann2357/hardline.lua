@@ -3,7 +3,7 @@ require("hardline").setup {
     bufferline = true,
     bufferline_settings = {
         exclude_terminal = true,
-        show_numbers = true,
+        show_index = true,
     },
     sections = {
         {class = 'mode', item = require('hardline.parts.mode').get_item},
