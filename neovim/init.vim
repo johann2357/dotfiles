@@ -65,6 +65,8 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Resize splits
 nnoremap <Leader>+ :vertical resize +6<CR>
 nnoremap <Leader>- :vertical resize -6<CR>
+nnoremap <Leader><Leader>+ :resize +6<CR>
+nnoremap <Leader><Leader>- :resize -6<CR>
 
 augroup lang_settings
   autocmd!
