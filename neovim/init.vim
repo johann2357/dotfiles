@@ -68,6 +68,9 @@ nnoremap <Leader>- :vertical resize -6<CR>
 nnoremap <Leader><Leader>+ :resize +6<CR>
 nnoremap <Leader><Leader>- :resize -6<CR>
 
+" Let's learn to delete with Ctrl+h
+inoremap <BS> <nop>
+
 augroup lang_settings
   autocmd!
   autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
