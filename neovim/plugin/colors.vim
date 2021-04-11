@@ -15,4 +15,3 @@ fun! TurnOffTheLights()
 endfun
 
 call TurnOffTheLights()
-

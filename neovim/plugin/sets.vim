@@ -29,3 +29,4 @@ set nowrap
 set termguicolors
 set scrolloff=6
 set showcmd
+set showmode
