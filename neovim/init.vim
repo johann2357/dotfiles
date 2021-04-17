@@ -41,7 +41,7 @@ filetype plugin indent on
 syntax enable
 
 " Set Leader Key
-let mapleader = ","
+let mapleader = " "
 
 " Yank and paste from clipboard
 vnoremap <Leader>y "+y

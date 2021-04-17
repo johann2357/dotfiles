@@ -12,6 +12,9 @@ fun! TurnOffTheLights()
   let g:gruvbox_contrast_dark='hard'
   set background=dark
   colorscheme gruvbox
+  hi SignColumn guibg=none
+  hi CursorLineNR guibg=none
+  highlight Normal guibg=none
 endfun
 
 call TurnOffTheLights()
