@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -f ~/.zlogin
+ln -s ~/Code/dotfiles/zsh/.zlogin ~/.zlogin

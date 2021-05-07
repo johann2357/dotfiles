@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+items=`find ~/Work -maxdepth 2 -mindepth 2 -type d`
+items+=`echo " "`
+items+=`find ~/Code -maxdepth 1 -mindepth 1 -type d`
+items+=`echo " "`
+items+=`find ~/Documents/Code -maxdepth 1 -mindepth 1 -type d`
+
+selected=`echo "$items" | xargs -n 1 | fzf`
+
+session=`basename $selected`
+
+tmux switch-client -t $session 2>/dev/null
+
+if [ $? -eq 0 ]; then
+  exit 0
+fi
+
+tmux new-session -c $selected -d -s $session && tmux switch-client -t $session || tmux new -c $selected -A -s $session 2>/dev/null

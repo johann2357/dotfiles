@@ -62,6 +62,16 @@ tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
+" Dvorak stuff because my brain is about to explode
+" and it was fun to do this in qwerty
+nnoremap <C-w>z <C-w>s
+tnoremap <C-w>t <C-\><C-n><C-w>j
+tnoremap <C-w>n <C-\><C-n><C-w>k
+tnoremap <C-w>s <C-\><C-n><C-w>l
+nnoremap <C-w>t <C-w>j
+nnoremap <C-w>n <C-w>k
+nnoremap <C-w>s <C-w>l
+
 " Resize splits
 nnoremap <Leader>+ :vertical resize +6<CR>
 nnoremap <Leader>- :vertical resize -6<CR>
@@ -70,6 +80,13 @@ nnoremap <Leader><Leader>- :resize -6<CR>
 
 " Let's learn to delete with Ctrl+h
 inoremap <BS> <nop>
+
+" I have mapped the arrow keys to a different layer
+" in the same place as hjkl
+nnoremap <Left> 12h
+nnoremap <Down> 12j
+nnoremap <Up> 12k
+nnoremap <Right> 12l
 
 augroup lang_settings
   autocmd!
