@@ -16,4 +16,8 @@ if [ $? -eq 0 ]; then
   exit 0
 fi
 
-tmux new-session -c $selected -d -s $session && tmux switch-client -t $session || tmux new -c $selected -A -s $session 2>/dev/null
+tmux new-session -c $selected -d -s $session &&
+tmux send-keys -t $session "conda activate $session 2>/dev/null" Enter &&
+tmux switch-client -t $session ||
+tmux new -c $selected -A -s $session 2>/dev/null
+
