@@ -19,7 +19,7 @@ set splitright
 set updatetime=50
 " custom
 set laststatus=2
-set cc=120
+set cc=100
 set ruler
 set nofoldenable
 set signcolumn=no
