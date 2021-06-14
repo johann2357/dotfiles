@@ -26,6 +26,8 @@ Plug 'johann2357/nvim-hardline', {'branch': 'develop'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
+" <lspcontainers>
+Plug 'lspcontainers/lspcontainers.nvim'
 " <telescope>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -77,9 +79,6 @@ nnoremap <Leader>+ :vertical resize +6<CR>
 nnoremap <Leader>- :vertical resize -6<CR>
 nnoremap <Leader><Leader>+ :resize +6<CR>
 nnoremap <Leader><Leader>- :resize -6<CR>
-
-" Let's learn to delete with Ctrl+h
-inoremap <BS> <nop>
 
 " I have mapped the arrow keys to a different layer
 " in the same place as hjkl
