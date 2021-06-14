@@ -1,0 +1,17 @@
+# Workflow
+xclip
+tmux
+fzf
+pipx
+# Neovim
+cmake
+luarocks
+pkg-config
+--HEAD luajit
+--HEAD neovim
+neovim --HEAD
+# Term utils
+htop
+tree
+# Work
+awscli
