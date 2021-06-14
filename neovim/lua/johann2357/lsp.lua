@@ -17,7 +17,14 @@ local server = "sumneko_lua"
 require'lspconfig'[server].setup{
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = require'lspcontainers'.command(server, { root_dir = new_root_dir })
-  end
+  end;
+  settings = {
+      Lua = {
+          diagnostics = {
+              globals = { 'vim' }
+          }
+      }
+  }
 }
 
 require'lspconfig'.bashls.setup {
