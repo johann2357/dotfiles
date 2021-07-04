@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+brew update
+grep -vE "^#" formulae.txt | xargs -n 1 | grep -vE "^-" | xargs -L 1 brew upgrade

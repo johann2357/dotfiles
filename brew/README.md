@@ -3,5 +3,8 @@
 # Easy setup
 - Run `./boostrap`
 
-# Useful
-- To clean-up eveything: `brew remove --force $(brew list --formula) --ignore-dependencies`
+# Update packages
+- Run `./update`
+
+# Clean install
+- Run `./clean`
