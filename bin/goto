@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-items=`find ~/Work -maxdepth 2 -mindepth 2 -type d`
+items=`find -L ~/Work -maxdepth 2 -mindepth 2 -type d`
 items+=`echo " "`
-items+=`find ~/Code -maxdepth 1 -mindepth 1 -type d`
+items+=`find -L ~/Code -maxdepth 1 -mindepth 1 -type d`
 items+=`echo " "`
-items+=`find ~/Documents/Code -maxdepth 1 -mindepth 1 -type d`
+items+=`find -L ~/Documents/Code -maxdepth 1 -mindepth 1 -type d`
 
 selected=`echo "$items" | xargs -n 1 | fzf`
 
