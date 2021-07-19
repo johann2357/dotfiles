@@ -1,8 +1,7 @@
-require'lspconfig'.pyls.setup {
-  cmd = require'lspcontainers'.command('pylsp');
-  -- on_attach=require'completion'.on_attach;
+require'lspconfig'.pyls.setup{
+  on_attach=require'completion'.on_attach;
   settings={
-    pylsp={
+    pyls={
       plugins={
         pycodestyle={
           maxLineLength=120;
@@ -11,6 +10,21 @@ require'lspconfig'.pyls.setup {
     }
   }
 }
+
+-- check if previous config failed we use lspcontainers
+-- require'lspconfig'.pylsp.setup {
+--   cmd = require'lspcontainers'.command('pylsp');
+--   -- on_attach=require'completion'.on_attach;
+--   settings={
+--     pylsp={
+--       plugins={
+--         pycodestyle={
+--           maxLineLength=120;
+--         }
+--       }
+--     }
+--   }
+-- }
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls
 
 local server = "sumneko_lua"

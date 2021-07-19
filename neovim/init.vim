@@ -63,6 +63,8 @@ tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
+tnoremap <C-w>v <C-\><C-n><C-w>v
+tnoremap <C-w>z <C-\><C-n><C-w>s
 
 " Dvorak stuff because my brain is about to explode
 " and it was fun to do this in qwerty
