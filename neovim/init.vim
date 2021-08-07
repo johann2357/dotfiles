@@ -77,10 +77,10 @@ nnoremap <C-w>n <C-w>k
 nnoremap <C-w>s <C-w>l
 
 " Resize splits
-nnoremap <Leader>+ :vertical resize +6<CR>
-nnoremap <Leader>- :vertical resize -6<CR>
-nnoremap <Leader><Leader>+ :resize +6<CR>
-nnoremap <Leader><Leader>- :resize -6<CR>
+nnoremap <C-w>< :vertical resize +6<CR>
+nnoremap <C-w>> :vertical resize -6<CR>
+nnoremap <C-w>+ :resize +6<CR>
+nnoremap <C-w>- :resize -6<CR>
 
 " I have mapped the arrow keys to a different layer
 " in the same place as hjkl
@@ -88,6 +88,34 @@ nnoremap <Left> 12h
 nnoremap <Down> 12j
 nnoremap <Up> 12k
 nnoremap <Right> 12l
+"Jumplist mutations
+nnoremap <expr> k (v:count > 13 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 13 ? "m'" . v:count : "") . 'j'
+
+" Keep it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap { {zzzv
+nnoremap } }zzzv
+nnoremap <c-o> <c-o>zzzv
+nnoremap <c-i> <c-i>zzzv
+nnoremap <C-j> :cnext<CR>zzzv
+nnoremap <C-k> :cprev<CR>zzzv
+
+" Moving stuff
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Undo breakpoints
+inoremap . .<c-g>u
+inoremap = =<c-g>u
+inoremap ( (<c-g>u
+inoremap ) )<c-g>u
+inoremap [ [<c-g>u
+inoremap ] ]<c-g>u
+inoremap { {<c-g>u
+inoremap } }<c-g>u
+inoremap <space> <space><c-g>u
 
 augroup lang_settings
   autocmd!
