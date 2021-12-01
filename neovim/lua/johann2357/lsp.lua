@@ -1,7 +1,7 @@
-require'lspconfig'.pyls.setup{
+require'lspconfig'.pylsp.setup{
   on_attach=require'completion'.on_attach;
   settings={
-    pyls={
+    pylsp={
       plugins={
         pycodestyle={
           maxLineLength=120;

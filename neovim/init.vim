@@ -16,12 +16,12 @@ set wildignore+=**/media/*
 call plug#begin('~/.config/nvim/plugged')
 " tpope
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-vinegar'
 " python
 Plug 'cjrh/vim-conda', {'for': 'python'}
-" custom plugins
-Plug 'johann2357/nvim-smartbufs'
-Plug 'johann2357/nvim-hardline', {'branch': 'develop'}
+" <treesitter>
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -33,6 +33,10 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" <harpoon>
+Plug 'ThePrimeagen/harpoon'
+" <hardline>
+Plug 'ojroques/nvim-hardline'
 " colorscheme
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
@@ -97,6 +101,8 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap { {zzzv
 nnoremap } }zzzv
+nnoremap <c-u> <c-u>zzzv
+nnoremap <c-d> <c-d>zzzv
 nnoremap <c-o> <c-o>zzzv
 nnoremap <c-i> <c-i>zzzv
 nnoremap <C-j> :cnext<CR>zzzv

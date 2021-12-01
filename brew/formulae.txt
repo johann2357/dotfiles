@@ -15,3 +15,5 @@ htop
 tree
 # Work
 awscli
+jq
+gcc

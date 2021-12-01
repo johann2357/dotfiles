@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+languages="
+python
+bash
+"
+commands="
+top
+git
+curl
+ssh
+chmod
+chown
+"
+options="
+$languages
+$commands
+"
+selected=`echo $options | xargs -n 1 | fzf`
+read -p "Enter Query: " query
+
+if grep -qs "$selected" $languages; then
+    query=`echo $query | tr ' ' '+'`
+    tmux neww bash -c "curl cht.sh/$selected/$query & while [ : ]; do sleep 1; done"
+else
+    tmux neww bash -c "curl cht.sh/$selected~$query & while [ : ]; do sleep 1; done"
+fi
