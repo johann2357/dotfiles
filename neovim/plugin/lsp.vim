@@ -9,6 +9,6 @@ nnoremap <leader>vh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>vca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_enable_auto_popup = 0
-imap <silent> <c-o> <Plug>(completion_trigger)
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" let g:completion_enable_auto_popup = 0
+" imap <silent> <c-o> <Plug>(completion_trigger)

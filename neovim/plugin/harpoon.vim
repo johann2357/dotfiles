@@ -14,6 +14,15 @@ nnoremap <Leader>.t :lua require("harpoon.ui").nav_file(6)<CR>
 nnoremap <Leader>.n :lua require("harpoon.ui").nav_file(7)<CR>
 nnoremap <Leader>.s :lua require("harpoon.ui").nav_file(8)<CR>
 
+tnoremap <C-w>.a <C-\><C-n>:lua require("harpoon.ui").nav_file(1)<CR>
+tnoremap <C-w>.o <C-\><C-n>:lua require("harpoon.ui").nav_file(2)<CR>
+tnoremap <C-w>.e <C-\><C-n>:lua require("harpoon.ui").nav_file(3)<CR>
+tnoremap <C-w>.u <C-\><C-n>:lua require("harpoon.ui").nav_file(4)<CR>
+tnoremap <C-w>.h <C-\><C-n>:lua require("harpoon.ui").nav_file(5)<CR>
+tnoremap <C-w>.t <C-\><C-n>:lua require("harpoon.ui").nav_file(6)<CR>
+tnoremap <C-w>.n <C-\><C-n>:lua require("harpoon.ui").nav_file(7)<CR>
+tnoremap <C-w>.s <C-\><C-n>:lua require("harpoon.ui").nav_file(8)<CR>
+
 " Terminal navigation
 nnoremap <Leader>ca :lua require("harpoon.term").gotoTerminal(1)<CR>
 nnoremap <Leader>co :lua require("harpoon.term").gotoTerminal(2)<CR>
@@ -21,4 +30,3 @@ nnoremap <Leader>ce :lua require("harpoon.term").gotoTerminal(3)<CR>
 nnoremap <Leader>cu :lua require("harpoon.term").gotoTerminal(4)<CR>
 
 nnoremap <Leader>c. :lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>
-

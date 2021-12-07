@@ -24,7 +24,11 @@ Plug 'cjrh/vim-conda', {'for': 'python'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
+Plug 'hrsh7th/cmp-buffer'  " Source for buffer words
+Plug 'hrsh7th/nvim-cmp'  " Autocompletion plugin
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 " <lspcontainers>
 Plug 'lspcontainers/lspcontainers.nvim'
