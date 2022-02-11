@@ -1,14 +1,14 @@
 -- Setup lspkind
 local source_mapping = {
-  buffer = "[Buffer]",
+  buffer = "[buff]",
   nvim_lsp = "[LSP]",
-  nvim_lua = "[Lua]",
-  cmp_tabnine = "[TN]",
-  path = "[Path]",
+  nvim_lua = "[lua]",
+  cmp_tabnine = "[tabn]",
+  path = "[path]",
 }
 local lspkind = require("lspkind")
 lspkind.init({
-    with_text = true,
+    mode = "text",
 })
 
 -- Setup nvim-cmp.
@@ -21,7 +21,11 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind]
+      vim_item.kind = string.format(
+        "%9.9s %s",
+        string.lower(vim_item.kind),
+        lspkind.presets.default[vim_item.kind]
+      )
       local menu = source_mapping[entry.source.name]
       if entry.source.name == 'cmp_tabnine' then
         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
@@ -43,7 +47,7 @@ cmp.setup({
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
   max_lines = 1000,
-  max_num_results = 20,
+  max_num_results = 10,
   sort = true,
   run_on_every_keystroke = true,
   snippet_placeholder = '..',
@@ -61,7 +65,7 @@ end
 
 require'lspconfig'.pylsp.setup(config({
   settings={
-    pyls={
+    pylsp={
       plugins={
         pycodestyle={
           maxLineLength=120;
