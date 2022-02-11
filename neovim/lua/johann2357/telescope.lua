@@ -17,3 +17,4 @@ require('telescope').setup({
         color_devicons = true,
     }
 })
+require("telescope").load_extension("git_worktree")

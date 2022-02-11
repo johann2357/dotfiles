@@ -32,6 +32,8 @@ Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 " <lspcontainers>
 Plug 'lspcontainers/lspcontainers.nvim'
+" <git>
+Plug 'ThePrimeagen/git-worktree.nvim'
 " <telescope>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'

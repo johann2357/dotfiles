@@ -11,6 +11,7 @@ curl
 ssh
 chmod
 chown
+sed
 "
 options="
 $languages

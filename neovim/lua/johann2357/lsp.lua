@@ -61,7 +61,7 @@ end
 
 require'lspconfig'.pylsp.setup(config({
   settings={
-    pylsp={
+    pyls={
       plugins={
         pycodestyle={
           maxLineLength=120;
