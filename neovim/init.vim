@@ -76,16 +76,6 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 tnoremap <C-w>v <C-\><C-n><C-w>v
 tnoremap <C-w>z <C-\><C-n><C-w>s
 
-" Dvorak stuff because my brain is about to explode
-" and it was fun to do this in qwerty
-nnoremap <C-w>z <C-w>s
-tnoremap <C-w>t <C-\><C-n><C-w>j
-tnoremap <C-w>n <C-\><C-n><C-w>k
-tnoremap <C-w>s <C-\><C-n><C-w>l
-nnoremap <C-w>t <C-w>j
-nnoremap <C-w>n <C-w>k
-nnoremap <C-w>s <C-w>l
-
 " Resize splits
 nnoremap <C-w>< :vertical resize +6<CR>
 nnoremap <C-w>> :vertical resize -6<CR>
@@ -94,10 +84,9 @@ nnoremap <C-w>- :resize -6<CR>
 
 " I have mapped the arrow keys to a different layer
 " in the same place as hjkl
-nnoremap <Left> 12h
-nnoremap <Down> 12j
-nnoremap <Up> 12k
-nnoremap <Right> 12l
+nnoremap <Down> L13<C-e>
+nnoremap <Up> H13<C-y>
+
 "Jumplist mutations
 nnoremap <expr> k (v:count > 13 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 13 ? "m'" . v:count : "") . 'j'
