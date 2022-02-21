@@ -26,9 +26,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
 Plug 'hrsh7th/cmp-buffer'  " Source for buffer words
+Plug 'hrsh7th/cmp-path'  " Source for path stuff
 Plug 'hrsh7th/nvim-cmp'  " Autocompletion plugin
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-Plug 'onsails/lspkind-nvim'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }  " Smart completion stuff
+Plug 'onsails/lspkind-nvim'  " Symbols for completion stuff
 Plug 'nvim-lua/lsp_extensions.nvim'
 " <lspcontainers>
 Plug 'lspcontainers/lspcontainers.nvim'
@@ -39,6 +40,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 " <harpoon>
 Plug 'ThePrimeagen/harpoon'
 " <hardline>

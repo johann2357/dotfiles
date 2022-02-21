@@ -1,10 +1,12 @@
-require('telescope').setup({
+local telescope = require("telescope")
+
+telescope.setup({
     defaults={
-        -- file_sorter=require('telescope.sorters').get_fzy_sorter,
         file_ignore_patterns = {
             "node_modules/.*",
             "__pycache__/.*",
             ".git/.*",
+            "build/.*",
             "deps/.*",
             "dist/.*",
             "platforms/.*",
@@ -13,8 +15,13 @@ require('telescope').setup({
             "tmp/.*",
             "%.pyc",
         },
-        prompt_prefix = '> ',
+        prompt_prefix = "> ",
         color_devicons = true,
-    }
+        layout_strategy = 'vertical',
+        layout_config = {
+            height = 0.95,
+            width = 0.65,
+        },
+    },
 })
-require("telescope").load_extension("git_worktree")
+telescope.load_extension("git_worktree")

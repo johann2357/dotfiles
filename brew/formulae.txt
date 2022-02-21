@@ -17,3 +17,5 @@ tree
 awscli
 jq
 gcc
+ripgrep
+fd
