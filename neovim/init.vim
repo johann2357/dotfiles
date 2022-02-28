@@ -69,6 +69,7 @@ nnoremap gp `[v`]
 nnoremap <Leader><Esc> :noh<CR>
 
 " Terminal mappings
+tnoremap <C-^> <C-\><C-n><C-^>
 tnoremap <C-w>w <C-\><C-n>
 tnoremap <C-w>c <C-\><C-n><C-w>c
 tnoremap <C-w>h <C-\><C-n><C-w>h
