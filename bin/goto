@@ -10,14 +10,14 @@ selected=`echo "$items" | xargs -n 1 | fzf`
 
 session=`basename $selected`
 
-tmux switch-client -t $session 2>/dev/null
+tmux -u switch-client -t $session 2>/dev/null
 
 if [ $? -eq 0 ]; then
   exit 0
 fi
 
-tmux new-session -c $selected -d -s $session &&
-tmux send-keys -t $session "source .env 2>/dev/null || true && nvim -c ':lua require(\"harpoon.term\").gotoTerminal(1)' -c ':lua require(\"harpoon.term\").sendCommand(1, \"source .env 2>/dev/null || true \n\")'" Enter &&
-tmux switch-client -t $session ||
-tmux new -c $selected -A -s $session 2>/dev/null
+tmux -u new-session -c $selected -d -s $session &&
+tmux -u send-keys -t $session "source .env 2>/dev/null || true && nvim -c ':lua require(\"harpoon.term\").gotoTerminal(1)' -c ':lua require(\"harpoon.term\").sendCommand(1, \"source .env 2>/dev/null || true \n\")'" Enter &&
+tmux -u switch-client -t $session ||
+tmux -u new -c $selected -A -s $session 2>/dev/null
 
