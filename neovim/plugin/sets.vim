@@ -18,7 +18,7 @@ set splitright
 " default 4000ms - reduce it for better user experience
 set updatetime=50
 " custom
-set laststatus=2
+set laststatus=3
 set cc=100
 set ruler
 set nofoldenable
