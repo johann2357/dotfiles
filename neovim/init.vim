@@ -22,6 +22,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 " <treesitter>
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'numToStr/Comment.nvim'
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
