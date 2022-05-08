@@ -25,6 +25,8 @@ Plug 'cjrh/vim-conda', {'for': 'python'}
 " <treesitter>
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-treesitter/playground'
+Plug 'romgrk/nvim-treesitter-context'
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
