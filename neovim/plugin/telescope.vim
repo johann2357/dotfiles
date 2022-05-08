@@ -6,6 +6,8 @@ nnoremap <Leader>f <cmd>lua require("telescope.builtin").find_files()<CR>
 nnoremap <Leader>l <cmd>lua require("telescope.builtin").diagnostics()<CR>
 nnoremap <Leader>h <cmd>lua require("telescope.builtin").help_tags()<CR>
 nnoremap <Leader>r <cmd>lua require("telescope.builtin").live_grep()<CR>
+nnoremap <Leader>b <cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>
+nnoremap <Leader>s <cmd>lua require('telescope.builtin').tags({only_current_buffer=true})<CR>
 
 " git-worktree
 " <Enter> - switches to that worktree

@@ -12,6 +12,8 @@ set wildignore+=**/platforms/*
 set wildignore+=**/hooks*/
 set wildignore+=**/media/*
 
+" TODO: take a look at https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 " tpope
@@ -22,7 +24,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'cjrh/vim-conda', {'for': 'python'}
 " <treesitter>
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'numToStr/Comment.nvim'
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 " <lsp>
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
@@ -44,6 +46,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 " <harpoon>
 Plug 'ThePrimeagen/harpoon'
+" <comments>
+Plug 'numToStr/Comment.nvim'
 " <hardline>
 Plug 'ojroques/nvim-hardline'
 " colorscheme
