@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
 rm -f ~/.zlogin
+rm -f ~/.oh-my-zsh/custom/themes/johann2357.zsh-theme
 ln -s ~/Code/dotfiles/zsh/.zlogin ~/.zlogin
+ln -s ~/Code/dotfiles/zsh/johann2357.zsh-theme ~/.oh-my-zsh/custom/themes/johann2357.zsh-theme
