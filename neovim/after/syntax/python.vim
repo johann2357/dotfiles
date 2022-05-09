@@ -12,13 +12,21 @@
 " hi! link pythonFunctionKwarg GruvboxBlue
 " hi! link pythonSelf GruvboxOrangeBold
 
+" Custom gruvbox
+hi GruvboxYellowItalic guifg=#fabd2f ctermfg=214 guibg=NONE ctermbg=NONE gui=italic cterm=italic
+
 " TS stuff
+" Blue
 hi! link TSField GruvboxBlue
+" Red
 hi! link TSInclude GruvboxRedBold
+" Aqua
 hi! link TSMethod GruvboxAquaBold
 hi! link TSFunction GruvboxAquaBold
+" Yellow
+hi! link TSParameter GruvboxYellowItalic
 hi! link TSConstructor GruvboxYellow
-hi! link TSParameter GruvboxYellow
 hi! link TSType GruvboxYellowBold
+" Purple
 hi! link TSConstBuiltin GruvboxPurpleBold
 hi! link TSTypeBuiltin GruvboxPurpleBold
