@@ -19,6 +19,8 @@ cmp.setup({
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+    ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
   },
   formatting = {
     format = function(entry, vim_item)
