@@ -19,3 +19,5 @@ jq
 gcc
 ripgrep
 fd
+# Cask
+--cask amethyst
