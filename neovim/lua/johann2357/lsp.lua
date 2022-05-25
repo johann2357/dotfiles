@@ -77,6 +77,8 @@ local function config(_config)
   }, _config or {})
 end
 
+local util = require 'lspconfig/util'
+
 require"lspconfig".pylsp.setup(config({
   settings={
     pylsp={
@@ -121,10 +123,26 @@ require"lspconfig"[server].setup(config({
 
 require"lspconfig".bashls.setup(config({
   cmd = require"lspcontainers".command("bashls"),
-  -- root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
 }))
 
 require"lspconfig".yamlls.setup(config({
   cmd = require"lspcontainers".command("yamlls"),
-  -- root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
 }))
+
+require'lspconfig'.tsserver.setup {
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = require'lspcontainers'.command('tsserver'),
+  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+}
+
+require'lspconfig'.vuels.setup {
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = require'lspcontainers'.command('vuels'),
+  root_dir = util.root_pattern("package.json", vim.fn.getcwd()),
+}

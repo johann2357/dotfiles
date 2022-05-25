@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd BufNewFile,BufRead *.vue set filetype=vue

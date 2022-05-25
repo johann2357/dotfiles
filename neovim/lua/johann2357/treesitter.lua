@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup {
     "typescript",
     "html",
     "css",
+    "vue",
   }, -- A list of parser names, or "all"
   highlight = {
     enable = true, -- false will disable the whole extension
