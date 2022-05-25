@@ -2,8 +2,8 @@
 
 mkdir -p ~/.config/nvim/
 
-to_link=("init.vim"  "lua"  "plugin"  "after")
- 
+to_link=("init.vim"  "lua"  "plugin"  "after", "ftdetect")
+
 for elem in ${to_link[*]}; do
     echo "recreating $elem"
     rm -rf ~/.config/nvim/$elem
@@ -17,7 +17,7 @@ if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
 fi
 
 # Install requirements
-pip install -r requirements.txt
+pip install -r requirements.txt -U
 
 # Required for LSP
-pipx install 'python-language-server[all]'
+pipx install 'python-language-server[all]' --force

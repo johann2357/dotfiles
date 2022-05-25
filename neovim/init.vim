@@ -75,6 +75,9 @@ nnoremap gp `[v`]
 " Quick nohlsearch
 nnoremap <Leader><Esc> :noh<CR>
 
+" Toggle winbar
+nnoremap <Leader>x :call ToggleWinbar()<CR>
+
 " Terminal mappings
 tnoremap <C-^> <C-\><C-n><C-^>
 tnoremap <C-w>w <C-\><C-n>
@@ -139,7 +142,8 @@ augroup lang_settings
   autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType lua setlocal expandtab shiftwidth=4 softtabstop=4
   autocmd FileType javascriptreact setlocal noexpandtab shiftwidth=2 tabstop=2
-  autocmd FileType javascript setlocal noexpandtab shiftwidth=2 tabstop=2
+  autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType vue setlocal expandtab shiftwidth=4 tabstop=4
 augroup END
 
 " Plugins
