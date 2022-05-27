@@ -136,7 +136,7 @@ require'lspconfig'.tsserver.setup {
     params.processId = vim.NIL
   end,
   cmd = require'lspcontainers'.command('tsserver'),
-  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
+  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", vim.fn.getcwd()),
 }
 
 require'lspconfig'.vuels.setup {
@@ -144,5 +144,5 @@ require'lspconfig'.vuels.setup {
     params.processId = vim.NIL
   end,
   cmd = require'lspcontainers'.command('vuels'),
-  root_dir = util.root_pattern("package.json", vim.fn.getcwd()),
+  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", vim.fn.getcwd()),
 }
