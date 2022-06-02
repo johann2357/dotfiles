@@ -4,3 +4,12 @@ rm -f ~/.tmux.conf
 ln -s ~/Code/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 # Install xclip beforehand
+#
+rm -rf ~/.tmux/plugins/
+mkdir -p ~/.tmux/plugins/
+
+# Install TPM
+if [ ! -f ~/.tmux/plugins/tpm/tpm ]; then
+    echo "installing TPM"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
