@@ -21,3 +21,4 @@ ripgrep
 fd
 # Cask
 --cask amethyst
+--cask aws-vault
