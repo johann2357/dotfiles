@@ -56,6 +56,8 @@ Plug 'ojroques/nvim-hardline'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
+lua require("johann2357")
+
 filetype on
 filetype plugin indent on
 
@@ -76,7 +78,7 @@ nnoremap gp `[v`]
 nnoremap <Leader><Esc> :noh<CR>
 
 " Toggle winbar
-nnoremap <Leader>x :call ToggleWinbar()<CR>
+nnoremap <Leader>x <cmd>lua require("johann2357.sets").toggle_winbar()<CR>
 
 " Terminal mappings
 tnoremap <C-^> <C-\><C-n><C-^>

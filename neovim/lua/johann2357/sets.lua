@@ -1,3 +1,5 @@
+local M = {}
+
 -- Encoding
 vim.o.fileencoding = "utf-8"
 vim.o.encoding = "utf-8"
@@ -19,7 +21,7 @@ vim.o.splitright = true
 vim.o.updatetime = 50
 -- custom
 vim.o.laststatus = 3
-vim.o.cc = 100
+vim.o.cc = "100"
 vim.o.ruler = true
 vim.o.foldenable = false
 vim.o.signcolumn = "no"
@@ -30,3 +32,15 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 6
 vim.o.showcmd = true
 vim.o.showmode = true
+
+-- dynamic stuff
+M.toggle_winbar = function()
+    local winbar = vim.api.nvim_get_option("winbar")
+    if winbar == nil or winbar == "" then
+        vim.api.nvim_set_option("winbar", "%=%R %M %f")
+    else
+        vim.api.nvim_set_option("winbar", "")
+    end
+end
+
+return M
