@@ -20,5 +20,6 @@ gcc
 ripgrep
 fd
 # Cask
---cask amethyst
---cask aws-vault
+homebrew/cask/amethyst
+homebrew/cask/aws-vault
+homebrew/cask/docker

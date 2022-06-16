@@ -12,6 +12,7 @@ ssh
 chmod
 chown
 sed
+xargs
 "
 options="
 $languages
