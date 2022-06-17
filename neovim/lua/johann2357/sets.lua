@@ -1,37 +1,38 @@
 local M = {}
 
 -- Encoding
-vim.o.fileencoding = "utf-8"
-vim.o.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.encoding = "utf-8"
 -- Search beahavior
-vim.o.incsearch = true
-vim.o.hlsearch = true
-vim.o.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.smartcase = true
 -- tab behavior
-vim.o.expandtab = true
-vim.o.smarttab = true
-vim.o.smartindent = true
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.smartindent = true
 -- Continue comment marker in new lines.
-vim.o.formatoptions = vim.o.formatoptions .. "o"
+vim.opt.formatoptions:append("o")
 -- Horizontal split below current.
-vim.o.splitbelow = true
+vim.opt.splitbelow = true
 -- Vertical split to right of current.
-vim.o.splitright = true
+vim.opt.splitright = true
 -- default 4000ms - reduce it for better user experience
-vim.o.updatetime = 50
+vim.opt.updatetime = 50
 -- custom
-vim.o.laststatus = 3
-vim.o.cc = "100"
-vim.o.ruler = true
-vim.o.foldenable = false
-vim.o.signcolumn = "no"
-vim.o.nu = true
-vim.o.relativenumber = true
-vim.o.wrap = false
-vim.o.termguicolors = true
-vim.o.scrolloff = 6
-vim.o.showcmd = true
-vim.o.showmode = true
+vim.opt.laststatus = 3
+vim.opt.cc = "100"
+vim.opt.ruler = true
+vim.opt.foldenable = false
+vim.opt.signcolumn = "no"
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 6
+vim.opt.showcmd = true
+vim.opt.showmode = true
+vim.opt.isfname:append("@-@")
 
 -- dynamic stuff
 M.toggle_winbar = function()
