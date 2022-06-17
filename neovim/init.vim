@@ -56,82 +56,10 @@ Plug 'ojroques/nvim-hardline'
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
-lua require("johann2357")
-
 filetype on
 filetype plugin indent on
 
 syntax enable
-
-" Set Leader Key
-let mapleader = " "
-
-" Yank and paste from clipboard
-vnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
-vnoremap <Leader>p "+p
-
-" Select the last changed text
-nnoremap gp `[v`]
-
-" Quick nohlsearch
-nnoremap <Leader><Esc> :noh<CR>
-
-" Toggle winbar
-nnoremap <Leader>x <cmd>lua require("johann2357.sets").toggle_winbar()<CR>
-
-" Terminal mappings
-tnoremap <C-^> <C-\><C-n><C-^>
-tnoremap <C-w>w <C-\><C-n>
-tnoremap <C-w>c <C-\><C-n><C-w>c
-tnoremap <C-w>h <C-\><C-n><C-w>h
-tnoremap <C-w>j <C-\><C-n><C-w>j
-tnoremap <C-w>k <C-\><C-n><C-w>k
-tnoremap <C-w>l <C-\><C-n><C-w>l
-tnoremap <C-w>v <C-\><C-n><C-w>v
-tnoremap <C-w>z <C-\><C-n><C-w>s
-
-" Resize splits
-nnoremap <C-w>< :vertical resize +6<CR>
-nnoremap <C-w>> :vertical resize -6<CR>
-nnoremap <C-w>+ :resize +6<CR>
-nnoremap <C-w>- :resize -6<CR>
-
-" I have mapped the arrow keys to a different layer
-" in the same place as hjkl
-nnoremap <Down> L13<C-e>
-nnoremap <Up> H13<C-y>
-
-"Jumplist mutations
-nnoremap <expr> k (v:count > 13 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 13 ? "m'" . v:count : "") . 'j'
-
-" Keep it centered
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap { {zzzv
-nnoremap } }zzzv
-nnoremap <c-u> <c-u>zzzv
-nnoremap <c-d> <c-d>zzzv
-nnoremap <c-o> <c-o>zzzv
-nnoremap <c-i> <c-i>zzzv
-nnoremap <C-j> :cnext<CR>zzzv
-nnoremap <C-k> :cprev<CR>zzzv
-
-" Moving stuff
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" Undo breakpoints
-inoremap . .<c-g>u
-inoremap = =<c-g>u
-inoremap ( (<c-g>u
-inoremap ) )<c-g>u
-inoremap [ [<c-g>u
-inoremap ] ]<c-g>u
-inoremap { {<c-g>u
-inoremap } }<c-g>u
-inoremap <space> <space><c-g>u
 
 augroup lang_settings
   autocmd!
