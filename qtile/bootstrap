@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf ~/.config/qtile/
+ln -s ~/Code/dotfiles/qtile/ ~/.config/qtile

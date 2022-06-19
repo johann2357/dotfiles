@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf ~/.config/alacritty/
+ln -s ~/Code/dotfiles/alacritty/ ~/.config/alacritty

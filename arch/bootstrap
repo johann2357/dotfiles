@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+grep -vE "^#" pacman.txt | xargs -o sudo pacman -S
+grep -vE "^#" yay.txt | xargs -o yay -S

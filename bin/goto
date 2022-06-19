@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/Documents/Code
+mkdir -p ~/Documents/Work
+mkdir -p ~/Code
+mkdir -p ~/Work
+
 items=`find -L ~/Work -maxdepth 2 -mindepth 2 -type d`
 items+=`echo " "`
 items+=`find -L ~/Code -maxdepth 1 -mindepth 1 -type d`

@@ -1,0 +1,2 @@
+brave-bin
+neovim-nightly-bin

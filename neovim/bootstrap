@@ -17,6 +17,9 @@ if [ ! -f ~/.config/nvim/autoload/plug.vim ]; then
 fi
 
 # Install requirements
+python3 -m pip install --user -U pipx
+python3 -m pipx ensurepath
+
 pip install -r requirements.txt -U
 
 # Required for LSP
