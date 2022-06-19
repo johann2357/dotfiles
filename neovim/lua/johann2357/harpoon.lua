@@ -6,4 +6,7 @@ require("harpoon").setup({
         tmux_autoclose_windows = false,
         excluded_filetypes = { "harpoon" }
     },
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 30,
+    }
 })
