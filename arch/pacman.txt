@@ -25,3 +25,4 @@ fzf
 chromium
 xclip
 python-pynvim
+gcc
