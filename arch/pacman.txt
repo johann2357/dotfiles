@@ -26,3 +26,8 @@ chromium
 xclip
 python-pynvim
 gcc
+openssh
+man-db
+man-pages
+texinfo
+python-pipx

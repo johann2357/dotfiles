@@ -157,11 +157,13 @@ for i in groups:
 
 layouts = [
     layout.Tile(
-        border_focus=theme.gray,
+        border_focus=theme.bright_blue,
+        border_norma=theme.dark2,
         max_ratio=0.69,
         ratio=0.5,
-        margin=[3, 3, 0, 3],
+        margin=[3, 3, 3, 3],
         border_on_single=False,
+        border_width=3,
     ),
     layout.Max(margin=[3, 3, 3, 3]),
     # Try more layouts by unleashing below layouts.
@@ -178,7 +180,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="Meslo LG M Regular Nerd Font Complete.ttf",
     fontsize=12,
     padding=3,
 )
@@ -231,7 +233,7 @@ screens = [
                 ),
             ],
             size=17,
-            opacity=0.57,
+            opacity=0.59,
             background=theme.dark0_hard,
             margin=[3, 3, 3, 3],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
