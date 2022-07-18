@@ -2,9 +2,7 @@
 
 if [[ -L "$HOME/.bashrc" && -e "$HOME/.bashrc" ]]; then
   rm -f ~/.bashrc
-else
-  mv  ~/.bashrc ~/.bashrc.old
+  ln -s ~/Code/dotfiles/bash/.bashrc ~/.bashrc
 fi
-rm -f ~/.bashrc_johann2357
-ln -s ~/Code/dotfiles/bash/.bashrc ~/.bashrc
-ln -s ~/Code/dotfiles/bash/.bashrc_johann2357 ~/.bashrc_johann2357
+rm -f ~/.bashrc-personal
+ln -s ~/Code/dotfiles/bash/.bashrc-personal ~/.bashrc-personal
