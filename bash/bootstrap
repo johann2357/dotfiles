@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ -L "$HOME/.bashrc" && -e "$HOME/.bashrc" ]]; then
+  rm -f ~/.bashrc
+else
+  mv  ~/.bashrc ~/.bashrc.old
+fi
+rm -f ~/.bashrc_johann2357
+ln -s ~/Code/dotfiles/bash/.bashrc ~/.bashrc
+ln -s ~/Code/dotfiles/bash/.bashrc_johann2357 ~/.bashrc_johann2357

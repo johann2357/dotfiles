@@ -210,23 +210,42 @@ def create_window_name_widget() -> widget.WindowName:
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             widgets=[
                 widget.CurrentLayout(),
                 widget.GroupBox(this_current_screen_border=theme.gray),
-                create_window_name_widget(),
-                widget.Clock(format="%a, %d %b - %H:%M"),
-                widget.Spacer(),
                 widget.Prompt(),
+                create_window_name_widget(),
+                widget.Clock(format="%a %d %b  %H:%M"),
+                widget.Spacer(),
                 widget.Systray(),
-                widget.Volume(fmt=" Vol: {}"),
-                widget.Memory(
-                    format=" {MemUsed:.2f}{mm}/{MemTotal:.2f}{mm}",
-                    measure_mem="G",
+                widget.Battery(
+                    format=" Battery {char}{percent:2.0%}",
+                    unknown_char="~",
+                    charge_char="^",
+                    dicharge_char="v",
+                ),
+                widget.PulseVolume(
+                    fmt=" Vol {}",
+                    get_volume_command="pamixer --get-volume",
+                    volume_app="pamixer",
+                ),
+                widget.KeyboardLayout(
+                    fmt=" ({})",
                 ),
                 widget.Net(
                     prefix="M",
                     format=" {down} ↓↑{up}",
+                ),
+                widget.CPU(
+                    format=" CPU {load_percent}%",
+                ),
+                widget.ThermalSensor(
+                    format=" {temp:.1f}{unit}",
+                ),
+                widget.Memory(
+                    format=" Mem {MemUsed:.2f}/{MemTotal:.2f}{mm}",
+                    measure_mem="G",
                 ),
                 widget.CheckUpdates(
                     update_interval=60 * 60 * 3,

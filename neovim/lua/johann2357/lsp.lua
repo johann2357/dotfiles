@@ -81,7 +81,7 @@ local util = require 'lspconfig/util'
 
 require"lspconfig".pylsp.setup(config({
   settings={
-    pylsp={
+    pyls={
       plugins={
         pycodestyle={
           maxLineLength=120;

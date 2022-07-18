@@ -1,1 +1,2 @@
 neovim-nightly-bin
+brave-bin

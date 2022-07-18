@@ -31,3 +31,15 @@ man-db
 man-pages
 texinfo
 python-pipx
+sof-firmware
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-docs
+wireplumber
+wireplumber-docs
+helvum
+pamixer
+htop
+bash-completion
+ripgrep
