@@ -127,6 +127,39 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "space", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # MEDIA KEYS
+    #   - Volume
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("pamixer --decrease 5"),
+        desc="Lower Volume by 5%",
+    ),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("pamixer --increase 5"),
+        desc="Increase Volume by 5%",
+    ),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn("pamixer --toggle-mute"),
+        desc="Toggle Mute",
+    ),
+    #   - Brightness
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn("brightnessctl set +5%"),
+        desc="Increase Brightness by 5%",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("brightnessctl set 5%-"),
+        desc="Decrease Brightness by 5%",
+    ),
 ]
 
 groups = [Group(i) for i in "123456"]
@@ -223,7 +256,7 @@ screens = [
                     format=" Battery {char}{percent:2.0%}",
                     unknown_char="~",
                     charge_char="^",
-                    dicharge_char="v",
+                    discharge_char="v",
                 ),
                 widget.PulseVolume(
                     fmt=" Vol {}",
