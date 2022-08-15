@@ -51,7 +51,7 @@ Plug 'ThePrimeagen/harpoon'
 " <comments>
 Plug 'numToStr/Comment.nvim'
 " <hardline>
-Plug 'ojroques/nvim-hardline'
+Plug 'johann2357/nvim-hardline', { 'branch': 'harpoon' }
 " colorscheme
 Plug 'gruvbox-community/gruvbox'
 call plug#end()

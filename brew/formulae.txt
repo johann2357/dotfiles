@@ -4,6 +4,7 @@ xclip
 tmux
 fzf
 pipx
+bash
 # Neovim
 cmake
 luarocks

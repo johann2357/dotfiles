@@ -1,10 +1,12 @@
 require("hardline").setup {
     theme = "gruvbox_minimal",
-    bufferline = false,
-    -- bufferline_settings = {
-    --     exclude_terminal = true,
-    --     show_index = true,
-    -- },
+    bufferline = true,
+    bufferline_settings = {
+        use_harpoon_marks = true,
+        show_index = true,
+        separator = '|',
+        -- exclude_terminal = true,
+    },
     sections = {
         -- {class = 'mode', item = require('hardline.parts.mode').get_item},
         {class = 'med', item = require('hardline.parts.git').get_item, hide = 80},
