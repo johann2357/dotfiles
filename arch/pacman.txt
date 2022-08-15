@@ -45,3 +45,4 @@ bash-completion
 ripgrep
 brightnessctl
 acpi_call
+shotgun

@@ -214,8 +214,8 @@ layouts = [
 
 widget_defaults = dict(
     font="Meslo LG M Regular Nerd Font Complete.ttf",
-    fontsize=12,
-    padding=3,
+    fontsize=13,
+    padding=2,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -284,10 +284,11 @@ screens = [
                     update_interval=60 * 60 * 3,
                 ),
             ],
-            size=17,
-            opacity=0.59,
-            background=theme.dark0_hard,
-            margin=[3, 3, 3, 3],
+            size=19,
+            # background=theme.dark0_hard,  # Gruvbox
+            background="#135868",  # lakerside-5.jpg
+            opacity=0.69,
+            margin=[5, 10, 5, 10],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

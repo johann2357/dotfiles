@@ -6,3 +6,4 @@
 [[ $- != *i* ]] && return
 
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+[[ -f ~/.alias-personal ]] && . ~/.alias-personal

@@ -1,0 +1,36 @@
+# Alias list
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -alFh'
+alias l='ls'
+alias l.="ls -A | egrep '^\.'"
+
+# Alias git
+alias gst='git status'
+alias gd='git diff'
+alias gdw='git diff --word-diff'
+alias gds='git diff --staged'
+alias glg='git log --stat'
+alias glgg='git log --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+
+# Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# keyboard
+alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
+alias give-me-dvorak-us="sudo localectl set-x11-keymap us"
+
+# free
+alias free="free -mt"
+
+# search content with ripgrep
+alias rg="rg --sort path --hidden"
+
+# pacman
+alias pacman='pacman --color auto'
+
+# less
+alias less='less -R'

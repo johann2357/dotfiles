@@ -5,4 +5,6 @@ if [[ -L "$HOME/.bashrc" && -e "$HOME/.bashrc" ]]; then
   ln -s ~/Code/dotfiles/bash/.bashrc ~/.bashrc
 fi
 rm -f ~/.bashrc-personal
+rm -f ~/.alias-personal
 ln -s ~/Code/dotfiles/bash/.bashrc-personal ~/.bashrc-personal
+ln -s ~/Code/dotfiles/bash/.alias-personal ~/.alias-personal

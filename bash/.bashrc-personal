@@ -1,14 +1,8 @@
-#
-# ~/.bashrc_johann2357
-#
-
 export EDITOR='vim'
 export VISUAL='vim'
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
-PS1='[\u@\h \W]\$ '
 
 if [ -d "$HOME/Code/dotfiles/bin" ] ;
   then PATH="$HOME/Code/dotfiles/bin:$PATH"
@@ -28,31 +22,6 @@ bind "set completion-ignore-case on"
 ### Custom Config ###
 # Based from Arco ISO https://github.com/arcolinux/arcolinuxl-iso/blob/master/archiso/airootfs/etc/skel/.bashrc
 
-## Alias list
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -alFh'
-alias l='ls'
-alias l.="ls -A | egrep '^\.'"
-
-## Alias git
-alias gst='git status'
-alias gd='git diff'
-alias gdw='git diff --word-diff'
-alias gds='git diff --staged'
-alias glg='git log --stat'
-alias glgg='git log --graph'
-alias gloga='git log --oneline --decorate --graph --all'
-
-## Colorize the grep command output for ease of use (good for log files)##
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-## keyboard
-alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
-alias give-me-dvorak-us="sudo localectl set-x11-keymap us"
-
 ## Shopt
 shopt -s autocd  # change to named directory
 shopt -s cdspell  # autocorrects cd misspellings
@@ -60,18 +29,6 @@ shopt -s cmdhist  # save multi-line commands in history as single line
 shopt -s dotglob
 shopt -s histappend  # do not overwrite history
 shopt -s expand_aliases  # expand aliases
-
-#free
-alias free="free -mt"
-
-#search content with ripgrep
-alias rg="rg --sort path --hidden"
-
-#pacman
-alias pacman='pacman --color auto'
-
-#less
-alias less='less --color auto'
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
