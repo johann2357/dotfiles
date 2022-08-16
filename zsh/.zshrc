@@ -31,7 +31,7 @@ zmodload -i zsh/complist
 
 unsetopt MENU_COMPLETE   # do not autoselect the first completion entry
 unsetopt FLOWCONTROL     # disable Ctrl-S pause output while Ctrl-Q continue
-Setopt AUTO_MENU         # show completion menu on successive tab press
+setopt AUTO_MENU         # show completion menu on successive tab press
 setopt COMPLETE_IN_WORD
 setopt ALWAYS_TO_END
 setopt AUTO_PARAM_SLASH
@@ -54,3 +54,5 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
+# Custom OS stuff
+[[ -f ~/.zshrc-mac ]] && . ~/.zshrc-mac
