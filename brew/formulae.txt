@@ -20,6 +20,7 @@ jq
 gcc
 ripgrep
 fd
+httpie
 # Cask
 homebrew/cask/amethyst
 homebrew/cask/aws-vault
