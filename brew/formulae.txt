@@ -21,6 +21,8 @@ gcc
 ripgrep
 fd
 httpie
+miniconda
+alacritty
 # Cask
 homebrew/cask/amethyst
 homebrew/cask/aws-vault
