@@ -1,3 +1,4 @@
 neovim-nightly-bin
 brave-bin
 asdf-vm
+rate-mirrors
