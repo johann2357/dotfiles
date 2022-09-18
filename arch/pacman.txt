@@ -46,3 +46,4 @@ ripgrep
 brightnessctl
 acpi_call
 shotgun
+zsh-syntax-highlighting
