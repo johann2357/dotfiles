@@ -249,7 +249,9 @@ screens = [
                 widget.GroupBox(this_current_screen_border=theme.gray),
                 widget.Prompt(),
                 create_window_name_widget(),
-                widget.Clock(format="%a %d %b  %H:%M"),
+                widget.Clock(
+                    format="%a %d %b  %H:%M",
+                ),
                 widget.Spacer(),
                 widget.Systray(),
                 widget.Battery(

@@ -154,5 +154,11 @@ bindkey -M vicmd V edit-command-line
 # syntax highlight
 [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# asdf
+[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+
 # Custom OS stuff
 [[ -f ~/.zshrc-mac ]] && . ~/.zshrc-mac
+
+# Custom Linux stuff
+[[ -f ~/.zshrc-linux ]] && . ~/.zshrc-linux

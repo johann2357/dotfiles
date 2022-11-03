@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+items=`echo "brave-browser.desktop"`
+items+=`echo " "`
+items+=`echo "google-chrome.desktop"`
+items+=`echo " "`
+items+=`echo "chromium.desktop"`
+
+selected=`echo "$items" | xargs -n 1 | fzf`
+
+if [ -n "$selected" ]; then
+    xdg-settings set default-web-browser $selected
+fi
+
+# xdg-settings get default-web-browser

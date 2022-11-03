@@ -57,7 +57,7 @@ tabnine:setup({
 })
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local function config(_config)
   return vim.tbl_deep_extend("force", {
@@ -90,6 +90,18 @@ require"lspconfig".pylsp.setup(config({
     }
   }
 }))
+
+-- require"lspconfig".ccls.setup(config({
+--   init_options = {
+--     compilationDatabaseDirectory = ".build";
+--     index = {
+--       threads = 0;
+--     };
+--     clang = {
+--       excludeArgs = {"-frounding-math"} ;
+--     };
+--   }
+-- }))
 
 -- check if previous config failed we use lspcontainers
 -- require"lspconfig".pylsp.setup {
@@ -145,4 +157,9 @@ require'lspconfig'.vuels.setup {
   end,
   cmd = require'lspcontainers'.command('vuels'),
   root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", vim.fn.getcwd()),
+}
+
+require'lspconfig'.clangd.setup {
+  cmd = require'lspcontainers'.command('clangd'),
+  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
 }

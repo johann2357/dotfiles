@@ -26,21 +26,24 @@ hi GruvboxWhiteBold guifg=#f2e5bc ctermfg=228 guibg=NONE ctermbg=NONE gui=bold c
 
 " TS stuff
 " White
-hi! link TSConstant GruvboxWhiteBold
-hi! link TSStrong GruvboxWhiteBold
+hi! link @variable GruvboxWhite
+hi! link @constant GruvboxWhiteBold
+hi! link @strong GruvboxWhiteBold
 " Blue
-hi! link TSField GruvboxBlue
-hi! link TSLabel GruvboxBlueItalic
+hi! link @field GruvboxBlue
+hi! link @label GruvboxBlueItalic
 " Red
-hi! link TSInclude GruvboxRedBold
+hi! link @include GruvboxRedBold
 " Aqua
-hi! link TSTitle GruvboxAquaBold
-hi! link TSMethod GruvboxAquaBold
-hi! link TSFunction GruvboxAquaBold
+hi! link @title GruvboxAquaBold
+hi! link @method GruvboxAquaBold
+hi! link @function GruvboxAquaBold
 " Yellow
-hi! link TSConstructor GruvboxYellow
-hi! link TSType GruvboxYellowBold
+hi! link @constructor GruvboxYellow
+hi! link @type GruvboxYellowBold
 " Purple
-hi! link TSParameter GruvboxPurpleItalic
-hi! link TSConstBuiltin GruvboxPurpleBold
-hi! link TSTypeBuiltin GruvboxPurpleBold
+hi! link @parameter GruvboxPurpleItalic
+hi! link @constant.builtin GruvboxPurpleBold
+hi! link @type.builtin GruvboxPurpleBold
+" Orange
+hi! link @variable.builtin GruvboxOrange

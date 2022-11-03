@@ -1,0 +1,158 @@
+# FINISHED AT: 2022-08-27 23:48:07.594565014 -05:00
+Server = http://arch.mirror.constant.com/$repo/os/$arch
+Server = https://mirrors.radwebhosting.com/archlinux/$repo/os/$arch
+Server = https://archlinux.koyanet.lv/archlinux/$repo/os/$arch
+Server = http://archlinux.c3sl.ufpr.br/$repo/os/$arch
+Server = http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch
+Server = http://mirrors.nxthost.com/archlinux/$repo/os/$arch
+Server = http://mirrors.xtom.de/archlinux/$repo/os/$arch
+Server = http://mirror.23m.com/archlinux/$repo/os/$arch
+Server = http://mirrors.hostico.ro/archlinux/$repo/os/$arch
+Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
+Server = http://mirror.ams1.nl.leaseweb.net/archlinux/$repo/os/$arch
+
+# FINISHED AT: 2022-08-27 23:53:18.118714237 -05:00
+Server = http://mirror.cs.vt.edu/pub/ArchLinux/$repo/os/$arch
+Server = https://archlinux-br.com.br/archlinux/$repo/os/$arch
+Server = http://mirror.netcologne.de/archlinux/$repo/os/$arch
+Server = http://muug.ca/mirror/archlinux/$repo/os/$arch
+Server = http://arch.mirror.constant.com/$repo/os/$arch
+Server = http://ridgewireless.mm.fcix.net/archlinux/$repo/os/$arch
+Server = https://mirror1.cl.netactuate.com/archlinux/$repo/os/$arch
+Server = http://mirror.pagenotfound.de/archlinux/$repo/os/$arch
+Server = https://dist-mirror.fem.tu-ilmenau.de/archlinux/$repo/os/$arch
+Server = http://mirror.ams1.nl.leaseweb.net/archlinux/$repo/os/$arch
+Server = http://mirror.lebedinets.ru/archlinux/$repo/os/$arch
+Server = http://ftp.gwdg.de/pub/linux/archlinux/$repo/os/$arch
+Server = http://pkg.adfinis.com/archlinux/$repo/os/$arch
+
+# FINISHED AT: 2022-08-27 23:55:46.713198063 -05:00
+Server = http://mirror.jaime.sh/archlinux/$repo/os/$arch
+Server = http://distro.ibiblio.org/archlinux/$repo/os/$arch
+Server = http://mirrors.xtom.de/archlinux/$repo/os/$arch
+Server = http://www.mirrorservice.org/sites/ftp.archlinux.org/$repo/os/$arch
+Server = https://mirror.koddos.net/archlinux/$repo/os/$arch
+Server = http://mirror.dkm.cz/archlinux/$repo/os/$arch
+Server = http://mirror.moson.org/arch/$repo/os/$arch
+Server = http://quantum-mirror.hu/mirrors/pub/archlinux/$repo/os/$arch
+Server = http://mirror.lebedinets.ru/archlinux/$repo/os/$arch
+
+
+# STARTED AT: 2022-08-28 00:44:43.506823619 -05:00
+# ARGS: rate-mirrors --entry-country=pe arch --fetch-mirrors-timeout=30000
+# FETCHED MIRRORS: 1013
+# MIRRORS LEFT AFTER FILTERING: 501
+# JUMP #1
+# EXPLORING PE
+# VISITED PE
+#     + NEIGHBOR US (by HubsFirst)
+#     + NEIGHBOR BR (by HubsFirst)
+#     + NEIGHBOR CL (by HubsFirst)
+#     + NEIGHBOR EC (by DistanceFirst)
+# [CL] SpeedTestResult { speed: 506.83 KB/s; elapsed: 1.087897235s; connection_time: 412.184338ms }
+#     TOP NEIGHBOR - CONNECTION TIME: CL - 412.184338ms
+#     TOP NEIGHBOR - SPEED: CL - 506.83 KB/s
+#
+# JUMP #2
+# EXPLORING CL
+#     + NEIGHBOR CA (by HubsFirst)
+# BLANK ITERATION
+# COUNTRY JUMPING YIELDED TOO FEW MIRRORS (1), ADDING OTHERS TO UNLABELED
+#
+
+# TESTING UNLABELED MIRRORS
+# [PT] SpeedTestResult { speed: 145.35 KB/s; elapsed: 615.378078ms; connection_time: 618.48331ms }
+# [US] SpeedTestResult { speed: 545.53 KB/s; elapsed: 1.082954497s; connection_time: 413.539514ms }
+# [US] SpeedTestResult { speed: 726.08 KB/s; elapsed: 722.083508ms; connection_time: 750.00971ms }
+# [CH] SpeedTestResult { speed: 339.32 KB/s; elapsed: 240.671757ms; connection_time: 1.226101057s }
+# [RO] SpeedTestResult { speed: 226.43 KB/s; elapsed: 964.669857ms; connection_time: 534.93322ms }
+# [CL] SpeedTestResult { speed: 467.73 KB/s; elapsed: 999.388666ms; connection_time: 476.935578ms }
+# [HU] SpeedTestResult { speed: 232.64 KB/s; elapsed: 963.763206ms; connection_time: 532.626931ms }
+# [MD] SpeedTestResult { speed: 160.72 KB/s; elapsed: 755.124665ms; connection_time: 744.31578ms }
+#
+
+# RE-TESTING TOP MIRRORS
+# ==== RESULTS (top re-tested) ====
+#   1. [HU] SpeedTestResult { speed: 232.64 KB/s; elapsed: 963.763206ms; connection_time: 532.626931ms } -> http://archmirror.hbit.sztaki.hu/archlinux/
+#   2. [RO] SpeedTestResult { speed: 226.43 KB/s; elapsed: 964.669857ms; connection_time: 534.93322ms } -> http://mirror.efect.ro/archlinux/
+#   3. [MD] SpeedTestResult { speed: 160.72 KB/s; elapsed: 755.124665ms; connection_time: 744.31578ms } -> http://mirror.mangohost.net/archlinux/
+#   4. [PT] SpeedTestResult { speed: 145.35 KB/s; elapsed: 615.378078ms; connection_time: 618.48331ms } -> http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/
+# FINISHED AT: 2022-08-28 00:45:40.318787871 -05:00
+Server = http://archmirror.hbit.sztaki.hu/archlinux/$repo/os/$arch
+Server = http://mirror.efect.ro/archlinux/$repo/os/$arch
+Server = http://mirror.mangohost.net/archlinux/$repo/os/$arch
+Server = http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch
+
+
+
+
+
+$ rate-mirrors --entry-country=pe --country-neighbors-per-country=10 arch --fetch-mirrors-timeout=30000
+# STARTED AT: 2022-08-28 00:54:32.545466113 -05:00
+# ARGS: rate-mirrors --entry-country=pe --country-neighbors-per-country=10 arch --fetch-mirrors-timeout=30000
+# FETCHED MIRRORS: 1013
+# MIRRORS LEFT AFTER FILTERING: 500
+# JUMP #1
+# EXPLORING PE
+# VISITED PE
+#     + NEIGHBOR US (by HubsFirst)
+#     + NEIGHBOR BR (by HubsFirst)
+#     + NEIGHBOR CL (by HubsFirst)
+#     + NEIGHBOR EC (by HubsFirst)
+# BLANK ITERATION
+# COUNTRY JUMPING YIELDED TOO FEW MIRRORS (0), ADDING OTHERS TO UNLABELED
+#
+
+# TESTING UNLABELED MIRRORS
+# [HU] SpeedTestResult { speed: 142.22 KB/s; elapsed: 619.580661ms; connection_time: 676.954481ms }
+# [UK] SpeedTestResult { speed: 145.06 KB/s; elapsed: 519.074563ms; connection_time: 611.036517ms }
+# [US] SpeedTestResult { speed: 393.86 KB/s; elapsed: 668.789283ms; connection_time: 771.379256ms }
+# [US] SpeedTestResult { speed: 849.58 KB/s; elapsed: 1.070016756s; connection_time: 417.595529ms }
+# [US] SpeedTestResult { speed: 394.46 KB/s; elapsed: 580.79014ms; connection_time: 919.354278ms }
+# [US] SpeedTestResult { speed: 1.06 MB/s; elapsed: 710.273568ms; connection_time: 727.305072ms }
+# [US] SpeedTestResult { speed: 288.32 KB/s; elapsed: 733.236288ms; connection_time: 704.986431ms }
+# [CL] SpeedTestResult { speed: 3.03 MB/s; elapsed: 723.375112ms; connection_time: 778.647853ms }
+# [DE] SpeedTestResult { speed: 297.97 KB/s; elapsed: 698.956917ms; connection_time: 787.980303ms }
+# [DE] SpeedTestResult { speed: 174.53 KB/s; elapsed: 521.401129ms; connection_time: 948.364405ms }
+# [DE] SpeedTestResult { speed: 212.32 KB/s; elapsed: 475.338392ms; connection_time: 891.003121ms }
+# [DE] SpeedTestResult { speed: 271.48 KB/s; elapsed: 927.164911ms; connection_time: 530.724347ms }
+# [DE] SpeedTestResult { speed: 433.66 KB/s; elapsed: 894.891184ms; connection_time: 584.860463ms }
+# [SE] SpeedTestResult { speed: 239.19 KB/s; elapsed: 737.72389ms; connection_time: 549.044436ms }
+# [CA] SpeedTestResult { speed: 1.73 MB/s; elapsed: 1.126108921s; connection_time: 368.159308ms }
+# [PL] SpeedTestResult { speed: 158.32 KB/s; elapsed: 510.530289ms; connection_time: 766.326352ms }
+#
+
+# RE-TESTING TOP MIRRORS
+# [CA] SpeedTestResult { speed: 237.84 KB/s; elapsed: 918.202609ms; connection_time: 450.324444ms }
+# ==== RESULTS (top re-tested) ====
+#   1. [CA] SpeedTestResult { speed: 237.84 KB/s; elapsed: 918.202609ms; connection_time: 450.324444ms } -> http://mirror.its.dal.ca/archlinux/
+#   2. [US] SpeedTestResult { speed: 394.46 KB/s; elapsed: 580.79014ms; connection_time: 919.354278ms } -> https://archmirror1.octyl.net/
+#   3. [US] SpeedTestResult { speed: 393.86 KB/s; elapsed: 668.789283ms; connection_time: 771.379256ms } -> https://mirror.arizona.edu/archlinux/
+#   4. [DE] SpeedTestResult { speed: 297.97 KB/s; elapsed: 698.956917ms; connection_time: 787.980303ms } -> http://packages.oth-regensburg.de/archlinux/
+#   5. [US] SpeedTestResult { speed: 288.32 KB/s; elapsed: 733.236288ms; connection_time: 704.986431ms } -> http://mirror.siena.edu/archlinux/
+#   6. [DE] SpeedTestResult { speed: 271.48 KB/s; elapsed: 927.164911ms; connection_time: 530.724347ms } -> http://mirror.wtnet.de/archlinux/
+#   7. [SE] SpeedTestResult { speed: 239.19 KB/s; elapsed: 737.72389ms; connection_time: 549.044436ms } -> http://ftpmirror.infania.net/mirror/archlinux/
+#   8. [DE] SpeedTestResult { speed: 212.32 KB/s; elapsed: 475.338392ms; connection_time: 891.003121ms } -> http://mirror.pagenotfound.de/archlinux/
+#   9. [DE] SpeedTestResult { speed: 174.53 KB/s; elapsed: 521.401129ms; connection_time: 948.364405ms } -> http://mirror.informatik.tu-freiberg.de/arch/
+#  10. [PL] SpeedTestResult { speed: 158.32 KB/s; elapsed: 510.530289ms; connection_time: 766.326352ms } -> http://repo.skni.umcs.pl/archlinux/
+#  11. [UK] SpeedTestResult { speed: 145.06 KB/s; elapsed: 519.074563ms; connection_time: 611.036517ms } -> http://mirror.netweaver.uk/archlinux/
+#  12. [HU] SpeedTestResult { speed: 142.22 KB/s; elapsed: 619.580661ms; connection_time: 676.954481ms } -> http://archmirror.hbit.sztaki.hu/archlinux/
+# FINISHED AT: 2022-08-28 00:55:27.653003029 -05:00
+Server = http://mirror.its.dal.ca/archlinux/$repo/os/$arch
+Server = https://archmirror1.octyl.net/$repo/os/$arch
+Server = https://mirror.arizona.edu/archlinux/$repo/os/$arch
+Server = http://packages.oth-regensburg.de/archlinux/$repo/os/$arch
+Server = http://mirror.siena.edu/archlinux/$repo/os/$arch
+Server = http://mirror.wtnet.de/archlinux/$repo/os/$arch
+Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+Server = http://mirror.pagenotfound.de/archlinux/$repo/os/$arch
+Server = http://mirror.informatik.tu-freiberg.de/arch/$repo/os/$arch
+Server = http://repo.skni.umcs.pl/archlinux/$repo/os/$arch
+Server = http://mirror.netweaver.uk/archlinux/$repo/os/$arch
+Server = http://archmirror.hbit.sztaki.hu/archlinux/$repo/os/$arch
+[0:55:27 - johann@arch] ~/Code/dotfiles (master)
+Server = http://mirror.init7.net/archlinux/$repo/os/$arch
+Server = http://mirror.moson.org/arch/$repo/os/$arch
+Server = http://archlinux.mirror.iphh.net/$repo/os/$arch
+Server = http://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch
+

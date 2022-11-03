@@ -2,3 +2,7 @@ neovim-nightly-bin
 brave-bin
 asdf-vm
 rate-mirrors
+google-chrome
+authy
+slack-desktop
+postman9-bin

@@ -45,5 +45,13 @@ bash-completion
 ripgrep
 brightnessctl
 acpi_call
-shotgun
 zsh-syntax-highlighting
+aws-vault
+pass
+ccls
+pipewire-pulse
+fd
+jq
+maim
+linux-firmware
+graphicsmagick
