@@ -54,4 +54,5 @@ fd
 jq
 maim
 linux-firmware
-graphicsmagick
+nomacs
+pcmanfm-qt

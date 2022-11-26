@@ -149,16 +149,25 @@ keys = [
     ),
     #   - Brightness
     Key(
-        [],
-        "XF86MonBrightnessUp",
-        lazy.spawn("brightnessctl set +5%"),
+        [mod],
+        # "XF86MonBrightnessUp",
+        "F6",
+        lazy.spawn("brightnessctl set 5%+"),
         desc="Increase Brightness by 5%",
     ),
     Key(
-        [],
-        "XF86MonBrightnessDown",
+        [mod],
+        # "XF86MonBrightnessDown",
+        "F5",
         lazy.spawn("brightnessctl set 5%-"),
         desc="Decrease Brightness by 5%",
+    ),
+    #   - Screenshot
+    Key(
+        [mod, "shift"],
+        "s",
+        lazy.spawn("sshot"),
+        desc="Store screenshot in clipboard",
     ),
 ]
 
@@ -288,7 +297,8 @@ screens = [
             ],
             size=19,
             # background=theme.dark0_hard,  # Gruvbox
-            background="#135868",  # lakerside-5.jpg
+            # background="#135868",  # lakerside-5.jpg
+            background="#544461",  # lake-sunset.jpg
             opacity=0.69,
             margin=[5, 10, 5, 10],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
