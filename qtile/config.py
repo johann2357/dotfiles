@@ -224,7 +224,7 @@ layouts = [
 widget_defaults = dict(
     font="Meslo LG M Regular Nerd Font Complete.ttf",
     fontsize=13,
-    padding=2,
+    padding=1,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -254,41 +254,78 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=[
-                widget.CurrentLayout(),
-                widget.GroupBox(this_current_screen_border=theme.gray),
-                widget.Prompt(),
+                widget.CurrentLayoutIcon(),
+                widget.GroupBox(
+                    this_current_screen_border=theme.light0_hard,
+                    highlight_color=["#221a31", "#221a31"],  # lake-sunset.jpg
+                    borderwidth=1,
+                    inactive=theme.gray,
+                    disable_drag=True,
+                    highlight_method="line",
+                ),
+                widget.Prompt(
+                    prompt=" > ",
+                ),
                 create_window_name_widget(),
                 widget.Clock(
                     format="%a %d %b  %H:%M",
                 ),
                 widget.Spacer(),
                 widget.Systray(),
+                widget.BatteryIcon(
+                    scale=1,
+                    theme_path="/usr/share/icons/Papirus-Dark/24x24/panel/",
+                ),
                 widget.Battery(
-                    format=" Battery {char}{percent:2.0%}",
+                    format="{percent:2.0%} ",
                     unknown_char="~",
                     charge_char="^",
                     discharge_char="v",
                 ),
                 widget.PulseVolume(
-                    fmt=" Vol {}",
-                    get_volume_command="pamixer --get-volume",
+                    get_volume_command="pamixer --get-volume-human",
+                    volume_app="pamixer",
+                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                ),
+                widget.PulseVolume(
+                    fmt="{} ",
+                    get_volume_command="pamixer --get-volume-human",
                     volume_app="pamixer",
                 ),
-                widget.KeyboardLayout(
-                    fmt=" ({})",
+                # widget.KeyboardLayout(
+                #     fmt=" ({})",
+                # ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/network-receive.svg",
                 ),
                 widget.Net(
                     prefix="M",
-                    format=" {down} ↓↑{up}",
+                    format="{down} ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit.svg",
+                ),
+                widget.Net(
+                    prefix="M",
+                    format="{up} ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/indicator-cpufreq-25.svg",
                 ),
                 widget.CPU(
-                    format=" CPU {load_percent}%",
+                    format="{load_percent}% ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/psensor_normal.svg",
                 ),
                 widget.ThermalSensor(
-                    format=" {temp:.1f}{unit}",
+                    format="{temp:.1f}{unit} ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",
                 ),
                 widget.Memory(
-                    format=" Mem {MemUsed:.2f}/{MemTotal:.2f}{mm}",
+                    format="{MemUsed:.2f}/{MemTotal:.2f}{mm}",
                     measure_mem="G",
                 ),
                 widget.CheckUpdates(
@@ -298,10 +335,12 @@ screens = [
             size=19,
             # background=theme.dark0_hard,  # Gruvbox
             # background="#135868",  # lakerside-5.jpg
-            background="#544461",  # lake-sunset.jpg
+            # background="#2c2644",  # lake-sunset.jpg
+            background="#221a31",  # lake-sunset.jpg
             opacity=0.69,
             margin=[5, 10, 5, 10],
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            border_color="#221a31",  # lake-sunset.jpg
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),

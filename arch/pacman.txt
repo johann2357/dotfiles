@@ -56,3 +56,9 @@ maim
 linux-firmware
 nomacs
 pcmanfm-qt
+papirus-icon-theme
+xorg-fonts-misc
+hicolor-icon-theme
+pop-icon-theme
+lxde-icon-theme
+discord
