@@ -58,7 +58,9 @@ ex ()
 }
 
 ## PROMPT
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
-export PS1="\n\[\e[2m\][\t - \u@\h] \[\e[22m\]\[\e[36m\]\w/ \[\e[00m\]\[\e[1m\]\[\e[2m\]\$(parse_git_branch)\[\e[22m\] \n$ "
+# parse_git_branch() {
+#   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+# }
+# export PS1="\n\[\e[2m\][\t - \u@\h] \[\e[22m\]\[\e[36m\]\w/ \[\e[00m\]\[\e[1m\]\[\e[2m\]\$(parse_git_branch)\[\e[22m\] \n$ "
+
+export PS1="\n\[\e[2m\][\t - \u@\h] \[\e[22m\]\[\e[36m\]\w/ \[\e[00m\]\[\e[1m\]\[\e[2m\]\[\e[22m\] \n$ "
