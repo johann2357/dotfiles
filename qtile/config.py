@@ -1,7 +1,7 @@
 from enum import Enum
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -72,43 +72,55 @@ keys = [
         lazy.layout.increase_ratio(),
         desc="Grow master",
     ),
-    KeyChord(
+    Key([mod], "l", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "h", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    # Move windows between left/right columns or move up/down in current stack.
+    # Moving out of range in Columns layout will create new column.
+    Key(
+        [mod, "shift"],
+        "h",
+        lazy.layout.shuffle_left(),
+        desc="Move window to the left",
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
+    Key(
+        [mod, "shift"],
+        "j",
+        lazy.layout.shuffle_down(),
+        desc="Move window down",
+    ),
+    Key(
+        [mod, "shift"],
+        "k",
+        lazy.layout.shuffle_up(),
+        desc="Move window up",
+    ),
+    Key(
+        [mod, "shift"],
+        "r",
+        lazy.layout.normalize(),
+        desc="Reset all window sizes",
+    ),
+    Key(
         [mod],
         "w",
-        [
-            Key([], "l", lazy.layout.left(), desc="Move focus to left"),
-            Key([], "h", lazy.layout.right(), desc="Move focus to right"),
-            Key([], "j", lazy.layout.down(), desc="Move focus down"),
-            Key([], "k", lazy.layout.up(), desc="Move focus up"),
-            # Move windows between left/right columns or move up/down in current stack.
-            # Moving out of range in Columns layout will create new column.
-            Key(
-                ["shift"],
-                "h",
-                lazy.layout.shuffle_left(),
-                desc="Move window to the left",
-            ),
-            Key(
-                ["shift"],
-                "l",
-                lazy.layout.shuffle_right(),
-                desc="Move window to the right",
-            ),
-            Key(
-                ["shift"],
-                "j",
-                lazy.layout.shuffle_down(),
-                desc="Move window down",
-            ),
-            Key(
-                [mod, "shift"],
-                "k",
-                lazy.layout.shuffle_up(),
-                desc="Move window up",
-            ),
-            Key([], "r", lazy.layout.normalize(), desc="Reset all window sizes"),
-        ],
+        lazy.next_screen(),
+        desc="Move to next screen",
     ),
+    Key(
+        [mod, "shift"],
+        "w",
+        lazy.prev_screen(),
+        desc="Move to prev screen",
+    ),
+
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -171,7 +183,36 @@ keys = [
     ),
 ]
 
-groups = [Group(i) for i in "123456"]
+groups = [
+    Group(
+        name="1",
+        screen_affinity=0,
+        matches=[Match(title=["Brave"])]
+    ),
+    Group(
+        name="2",
+        screen_affinity=0,
+        matches=[Match(title=["Alacritty"])]
+    ),
+    Group(
+        name="3",
+        screen_affinity=0,
+        matches=[Match(title=["Chrome"])]
+    ),
+    Group(
+        name="4",
+        screen_affinity=0,
+    ),
+    Group(
+        name="5",
+        screen_affinity=1,
+    ),
+    Group(
+        name="6",
+        screen_affinity=1,
+        matches=[Match(title=["Slack"])]
+    ),
+]
 
 for i in groups:
     keys.extend(
@@ -257,7 +298,8 @@ screens = [
                 widget.CurrentLayoutIcon(),
                 widget.GroupBox(
                     this_current_screen_border=theme.light0_hard,
-                    highlight_color=["#221a31", "#221a31"],  # lake-sunset.jpg
+                    # highlight_color=["#221a31", "#221a31"],  # lake-sunset.jpg
+                    highlight_color=["#003558", "#003558"],  # lake-sunset.jpg
                     borderwidth=1,
                     inactive=theme.gray,
                     disable_drag=True,
@@ -335,15 +377,17 @@ screens = [
             size=19,
             # background=theme.dark0_hard,  # Gruvbox
             # background="#135868",  # lakerside-5.jpg
-            # background="#2c2644",  # lake-sunset.jpg
-            background="#221a31",  # lake-sunset.jpg
-            opacity=0.69,
+            # background="#221a31",  # lake-sunset.jpg
+            background="#003558",  # ocean-fishing.jpg
+            opacity=0.96,
             margin=[5, 10, 5, 10],
             border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            border_color="#221a31",  # lake-sunset.jpg
+            # border_color="#221a31",  # lake-sunset.jpg
+            border_color="#003558",  # ocean-fishing.jpg
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
+    Screen(),
 ]
 
 # Drag floating layouts.
