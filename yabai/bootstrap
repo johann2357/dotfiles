@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf ~/.config/yabai/
+ln -s ~/Code/dotfiles/yabai/ ~/.config/yabai

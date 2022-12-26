@@ -24,6 +24,8 @@ httpie
 miniconda
 alacritty
 # Cask
-homebrew/cask/amethyst
+# homebrew/cask/amethyst
 homebrew/cask/aws-vault
 homebrew/cask/docker
+koekeishiya/formulae/yabai
+koekeishiya/formulae/skhd
