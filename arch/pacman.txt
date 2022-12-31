@@ -64,3 +64,4 @@ lxde-icon-theme
 discord
 arandr
 feh
+archlinux-keyring
