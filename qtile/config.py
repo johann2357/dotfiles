@@ -337,19 +337,24 @@ screens = [
                 # widget.KeyboardLayout(
                 #     fmt=" ({})",
                 # ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/network-receive.svg",
-                ),
                 widget.Net(
                     prefix="M",
                     format="{down} ",
                 ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit.svg",
+                widget.NetIcon(
+                    scale=1,
+                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
                 ),
                 widget.Net(
                     prefix="M",
                     format="{up} ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",
+                ),
+                widget.Memory(
+                    format="{MemUsed:.2f}{mm} ",
+                    measure_mem="G",
                 ),
                 widget.Image(
                     filename="/usr/share/icons/Papirus/24x24/panel/indicator-cpufreq-25.svg",
@@ -361,17 +366,11 @@ screens = [
                     filename="/usr/share/icons/Papirus/24x24/panel/psensor_normal.svg",
                 ),
                 widget.ThermalSensor(
-                    format="{temp:.1f}{unit} ",
-                ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",
-                ),
-                widget.Memory(
-                    format="{MemUsed:.2f}/{MemTotal:.2f}{mm}",
-                    measure_mem="G",
+                    format="{temp:.1f}{unit}",
                 ),
                 widget.CheckUpdates(
                     update_interval=60 * 60 * 3,
+                    display_format="  {updates}",
                 ),
             ],
             size=19,
