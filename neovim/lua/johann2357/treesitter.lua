@@ -82,4 +82,4 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- remaps
-vim.keymap.set('n', '<Leader>z', '<cmd>TSHighlightCapturesUnderCursor<cr>')
+vim.keymap.set('n', '<Leader>zt', '<cmd>TSHighlightCapturesUnderCursor<cr>')

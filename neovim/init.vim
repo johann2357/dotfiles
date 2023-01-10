@@ -54,6 +54,8 @@ Plug 'numToStr/Comment.nvim'
 Plug 'johann2357/nvim-hardline', { 'branch': 'harpoon' }
 " colorscheme
 Plug 'gruvbox-community/gruvbox'
+" other
+Plug 'folke/zen-mode.nvim'
 call plug#end()
 
 filetype on
