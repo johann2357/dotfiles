@@ -163,3 +163,9 @@ require'lspconfig'.clangd.setup {
   cmd = require'lspcontainers'.command('clangd'),
   root_dir = util.root_pattern(".git", vim.fn.getcwd()),
 }
+
+require'lspconfig'.rust_analyzer.setup(config({
+  cmd = {
+    "rustup", "run", "stable", "rust-analyzer",
+  },
+}))

@@ -65,3 +65,6 @@ discord
 arandr
 feh
 archlinux-keyring
+reflector
+okular
+rustup

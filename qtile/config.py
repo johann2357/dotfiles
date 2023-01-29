@@ -341,10 +341,13 @@ screens = [
                     prefix="M",
                     format="{down} ",
                 ),
-                widget.NetIcon(
-                    scale=1,
-                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit.svg",
                 ),
+                # widget.NetIcon(
+                #     scale=1,
+                #     theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                # ),
                 widget.Net(
                     prefix="M",
                     format="{up} ",

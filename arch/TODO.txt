@@ -6,3 +6,5 @@
 ==> WARNING: Possibly missing firmware for module: bfa
 ==> WARNING: Possibly missing firmware for module: aic94xx
 ==> WARNING: Possibly missing firmware for module: xhci_pci
+- Run perioadically:
+`sudo reflector --save /etc/pacman.d/mirrorlist`
