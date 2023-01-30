@@ -8,7 +8,8 @@ lsp.ensure_installed({
   'rust_analyzer',
   'pylsp',
   'vuels',
-  'yaml-language-server',
+  'yamlls',
+  'marksman',
 })
 
 -- Fix Undefined global 'vim'

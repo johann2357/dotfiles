@@ -33,7 +33,6 @@ texinfo
 python-pipx
 sof-firmware
 pipewire
-pipewire-alsa
 pipewire-pulse
 pipewire-docs
 wireplumber
@@ -68,3 +67,5 @@ archlinux-keyring
 reflector
 okular
 rustup
+xdg-desktop-portal
+pavucontrol

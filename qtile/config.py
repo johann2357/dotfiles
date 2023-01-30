@@ -314,6 +314,24 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Systray(),
+                # widget.KeyboardLayout(
+                #     fmt=" ({})",
+                # ),
+                widget.Net(
+                    prefix="M",
+                    format="{down} ",
+                ),
+                widget.Image(
+                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit-receive.svg",
+                ),
+                # widget.NetIcon(
+                #     scale=1,
+                #     theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                # ),
+                widget.Net(
+                    prefix="M",
+                    format="{up} ",
+                ),
                 widget.BatteryIcon(
                     scale=1,
                     theme_path="/usr/share/icons/Papirus-Dark/24x24/panel/",
@@ -325,32 +343,14 @@ screens = [
                     discharge_char="v",
                 ),
                 widget.PulseVolume(
-                    get_volume_command="pamixer --get-volume-human",
-                    volume_app="pamixer",
+                    get_volume_command="pamixer --get-volume",
                     theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                    volume_app="pamixer",
                 ),
                 widget.PulseVolume(
                     fmt="{} ",
-                    get_volume_command="pamixer --get-volume-human",
+                    get_volume_command="pamixer --get-volume",
                     volume_app="pamixer",
-                ),
-                # widget.KeyboardLayout(
-                #     fmt=" ({})",
-                # ),
-                widget.Net(
-                    prefix="M",
-                    format="{down} ",
-                ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit.svg",
-                ),
-                # widget.NetIcon(
-                #     scale=1,
-                #     theme_path="/usr/share/icons/Papirus/24x24/panel/",
-                # ),
-                widget.Net(
-                    prefix="M",
-                    format="{up} ",
                 ),
                 widget.Image(
                     filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",

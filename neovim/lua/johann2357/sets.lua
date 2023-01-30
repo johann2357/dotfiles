@@ -8,6 +8,9 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = true
 vim.opt.smartcase = true
 -- tab behavior
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.smartindent = true
@@ -21,7 +24,7 @@ vim.opt.splitright = true
 vim.opt.updatetime = 50
 -- custom
 vim.opt.laststatus = 3
-vim.opt.cc = "100"
+vim.opt.colorcolumn = "120"
 vim.opt.ruler = true
 vim.opt.foldenable = false
 vim.opt.signcolumn = "no"
@@ -33,6 +36,11 @@ vim.opt.scrolloff = 6
 vim.opt.showcmd = true
 vim.opt.showmode = true
 vim.opt.isfname:append("@-@")
+-- undo
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
+vim.opt.undofile = true
 
 -- dynamic stuff
 M.toggle_winbar = function()

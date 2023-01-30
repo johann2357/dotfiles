@@ -12,6 +12,7 @@ require('nvim-treesitter.configs').setup {
     "html",
     "css",
     "vue",
+    "rust",
   }, -- A list of parser names, or "all"
   highlight = {
     enable = true, -- false will disable the whole extension
