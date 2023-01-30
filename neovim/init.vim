@@ -28,16 +28,18 @@ Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 Plug 'romgrk/nvim-treesitter-context'
 " <lsp>
+Plug 'VonHeikemen/lsp-zero.nvim', { 'branch': 'v1.x' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source for nvim-cmp
 Plug 'hrsh7th/cmp-buffer'  " Source for buffer words
 Plug 'hrsh7th/cmp-path'  " Source for path stuff
 Plug 'hrsh7th/nvim-cmp'  " Autocompletion plugin
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }  " Smart completion stuff
-Plug 'onsails/lspkind-nvim'  " Symbols for completion stuff
-Plug 'nvim-lua/lsp_extensions.nvim'
-" <lspcontainers>
-Plug 'lspcontainers/lspcontainers.nvim'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 " <git>
 Plug 'ThePrimeagen/git-worktree.nvim'
 " <telescope>

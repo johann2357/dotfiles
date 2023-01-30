@@ -1,171 +1,85 @@
--- Setup lspkind
-local source_mapping = {
-  buffer = "[buff]",
-  nvim_lsp = "[LSP]",
-  nvim_lua = "[lua]",
-  cmp_tabnine = "[tabn]",
-  path = "[path]",
-}
-local lspkind = require("lspkind")
-lspkind.init({
-    mode = "text",
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
+
+lsp.ensure_installed({
+  'tsserver',
+  'sumneko_lua',
+  'rust_analyzer',
+  'pylsp',
+  'vuels',
+  'yaml-language-server',
 })
 
--- Setup nvim-cmp.
-vim.opt.completeopt={"menu", "menuone", "noinsert", "noselect"}
-local cmp = require("cmp")
-cmp.setup({
-  mapping = {
-    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-    ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-  },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = string.format(
-        "%9.9s %s",
-        string.lower(vim_item.kind),
-        lspkind.presets.default[vim_item.kind]
-      )
-      local menu = source_mapping[entry.source.name]
-      if entry.source.name == "cmp_tabnine" then
-        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-            menu = entry.completion_item.data.detail .. " " .. menu
-        end
-        vim_item.kind = ""
-      end
-      vim_item.menu = menu
-      return vim_item
-    end
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-  },
-})
-
--- Setup cmp_tabnine
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 10,
-  sort = true,
-  run_on_every_keystroke = true,
-  snippet_placeholder = "..",
-})
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local function config(_config)
-  return vim.tbl_deep_extend("force", {
-    capabilities = capabilities,
-    on_attach = function()
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
-      vim.keymap.set("n", "<leader>vd", vim.lsp.buf.definition, {buffer=0})
-      vim.keymap.set("n", "<leader>vt", vim.lsp.buf.type_definition, {buffer=0})
-      vim.keymap.set("n", "<leader>vi", vim.lsp.buf.implementation, {buffer=0})
-      vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, {buffer=0})
-      vim.keymap.set("n", "<leader>vf", vim.lsp.buf.references, {buffer=0})
-      vim.keymap.set("n", "<leader>va", vim.lsp.buf.code_action, {buffer=0})
-      vim.keymap.set("n", "<leader>vh", vim.lsp.buf.signature_help, {buffer=0})
-      vim.keymap.set("n", "<leader>v<down>", vim.diagnostic.goto_next, {buffer=0})
-      vim.keymap.set("n", "<leader>v<up>", vim.diagnostic.goto_prev, {buffer=0})
-    end
-  }, _config or {})
-end
-
-local util = require 'lspconfig/util'
-
-require"lspconfig".pylsp.setup(config({
-  settings={
-    pyls={
-      plugins={
-        pycodestyle={
-          maxLineLength=120;
+-- Fix Undefined global 'vim'
+lsp.configure('sumneko_lua', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
         }
-      }
     }
-  }
-}))
+})
 
--- require"lspconfig".ccls.setup(config({
---   init_options = {
---     compilationDatabaseDirectory = ".build";
---     index = {
---       threads = 0;
---     };
---     clang = {
---       excludeArgs = {"-frounding-math"} ;
---     };
---   }
--- }))
 
--- check if previous config failed we use lspcontainers
--- require"lspconfig".pylsp.setup {
---   cmd = require"lspcontainers".command("pylsp");
---   -- on_attach=require"completion".on_attach;
---   settings={
---     pylsp={
---       plugins={
---         pycodestyle={
---           maxLineLength=120;
---         }
---       }
---     }
---   }
--- }
--- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-Space>'] = cmp.mapping.complete(),
+})
 
-local server = "sumneko_lua"
-require"lspconfig"[server].setup(config({
-  on_new_config = function(new_config, new_root_dir)
-    new_config.cmd = require"lspcontainers".command(server, { root_dir = new_root_dir })
-  end;
-  settings = {
-      Lua = {
-          diagnostics = {
-              globals = { "vim" }
-          }
-      }
-  }
-}))
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
 
-require"lspconfig".bashls.setup(config({
-  cmd = require"lspcontainers".command("bashls"),
-  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
-}))
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
 
-require"lspconfig".yamlls.setup(config({
-  cmd = require"lspcontainers".command("yamlls"),
-  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
-}))
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
 
-require'lspconfig'.tsserver.setup {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = require'lspcontainers'.command('tsserver'),
-  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", vim.fn.getcwd()),
-}
+lsp.on_attach(function(client, bufnr)
+    local opts = {buffer = bufnr, remap = false}
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "<leader>vd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "<leader>vt", function() vim.lsp.buf.type_definition() end, opts)
+    vim.keymap.set("n", "<leader>vi", function() vim.lsp.buf.implementation() end, opts)
+    vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>va", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>vh", function() vim.lsp.buf.signature_help() end, opts)
+    vim.keymap.set("n", "<leader>v<down>", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "<leader>v<up>", function() vim.diagnostic.goto_prev() end, opts)
+end)
 
-require'lspconfig'.vuels.setup {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = require'lspcontainers'.command('vuels'),
-  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", vim.fn.getcwd()),
-}
+lsp.configure('pylsp', {
+   settings={
+     pylsp={
+       plugins={
+         pycodestyle={
+           -- ignore={'W391'},
+           maxLineLength=120
+         }
+       }
+     }
+   }
+})
 
-require'lspconfig'.clangd.setup {
-  cmd = require'lspcontainers'.command('clangd'),
-  root_dir = util.root_pattern(".git", vim.fn.getcwd()),
-}
+lsp.setup()
 
-require'lspconfig'.rust_analyzer.setup(config({
-  cmd = {
-    "rustup", "run", "stable", "rust-analyzer",
-  },
-}))
+vim.diagnostic.config({
+    virtual_text = true
+})
