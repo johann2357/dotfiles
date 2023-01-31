@@ -45,11 +45,5 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'folke/zen-mode.nvim'
 call plug#end()
 
-augroup lang_settings
-  autocmd!
-  autocmd FileType vim setlocal expandtab shiftwidth=2 softtabstop=2
-  autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
-augroup END
-
 " Plugins
 lua require('johann2357')
