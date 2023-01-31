@@ -40,7 +40,6 @@ Plug 'numToStr/Comment.nvim'
 " <hardline>
 Plug 'johann2357/nvim-hardline', { 'branch': 'harpoon' }
 " colorscheme
-Plug 'gruvbox-community/gruvbox'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 " other
 Plug 'folke/zen-mode.nvim'

@@ -10,6 +10,20 @@ require("catppuccin").setup({
         shade = "dark",
         percentage = 0.15,
     },
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = { "italic" },
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
 })
 
 function PaintItBlack(color)
