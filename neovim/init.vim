@@ -37,6 +37,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 " <comments>
 Plug 'numToStr/Comment.nvim'
+" <undotree>
+Plug 'mbbill/undotree'
 " <hardline>
 Plug 'johann2357/nvim-hardline', { 'branch': 'harpoon' }
 " colorscheme
