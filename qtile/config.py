@@ -341,6 +341,8 @@ screens = [
                     unknown_char="~",
                     charge_char="^",
                     discharge_char="v",
+                    full_char="",
+                    show_short_text=False,
                 ),
                 widget.PulseVolume(
                     get_volume_command="pamixer --get-volume",
