@@ -15,6 +15,11 @@ items+=`find -L ~/Documents/Work -maxdepth 2 -mindepth 2 -type d`
 
 selected=`echo "$items" | xargs -n 1 | fzf`
 
+if [ -z "$var" ]; then
+    echo "no selection made"
+    exit 0
+fi
+
 session=`basename $selected`
 
 tmux -u switch-client -t $session 2>/dev/null
