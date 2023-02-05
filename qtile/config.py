@@ -178,8 +178,14 @@ keys = [
     Key(
         [mod, "shift"],
         "s",
-        lazy.spawn("sshot"),
+        lazy.spawn("sshot2clip"),
         desc="Store screenshot in clipboard",
+    ),
+    Key(
+        [mod, "shift"],
+        "z",
+        lazy.spawn("sshot2file"),
+        desc="Store screenshot in ~/Screenshots dir",
     ),
 ]
 

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mkdir -p ~/Screeshots
+maim -s -u ~/Screeshots/$(date -Iseconds).png

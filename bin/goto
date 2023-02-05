@@ -15,7 +15,7 @@ items+=`find -L ~/Documents/Work -maxdepth 2 -mindepth 2 -type d`
 
 selected=`echo "$items" | xargs -n 1 | fzf`
 
-if [ -z "$var" ]; then
+if [ -z "$selected" ]; then
     echo "no selection made"
     exit 0
 fi
