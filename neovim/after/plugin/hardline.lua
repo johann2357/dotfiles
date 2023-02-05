@@ -1,6 +1,6 @@
 require("hardline").setup {
-    -- theme = "gruvbox_minimal",
-    theme = "catppuccin_minimal",
+    theme = "gruvbox_minimal",
+    -- theme = "catppuccin_minimal",
     bufferline = true,
     bufferline_settings = {
         use_harpoon_marks = true,

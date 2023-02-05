@@ -1,5 +1,3 @@
-local M = {}
-
 -- Encoding
 vim.opt.fileencoding = "utf-8"
 vim.opt.encoding = "utf-8"
@@ -41,17 +39,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
-
--- dynamic stuff
-M.toggle_winbar = function()
-    local winbar = vim.api.nvim_get_option("winbar")
-    if winbar == nil or winbar == "" then
-        vim.api.nvim_set_option("winbar", "%=%R %M %f")
-    else
-        vim.api.nvim_set_option("winbar", "")
-    end
-end
-
+-- ignore stuff
 vim.opt.wildignore:append({
     '*.so',
     '*.swp',
@@ -63,5 +51,3 @@ vim.opt.wildignore:append({
     '**/node_modules/*',
     '**/dist/*',
 })
-
-return M

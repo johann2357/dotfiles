@@ -65,8 +65,18 @@ vim.keymap.set("n", "<expr> k", '(v:count > 13 ? "m\'" . v:count : "") . "k"')
 vim.keymap.set("n", "<expr> j", '(v:count > 13 ? "m\'" . v:count : "") . "j"')
 
 -- Toggle winbar
-vim.keymap.set("n", "<Leader>x", require("johann2357.sets").toggle_winbar)
+vim.keymap.set(
+    "n",
+    "<Leader>x",
+    function()
+        local winbar = vim.api.nvim_get_option("winbar")
+        if winbar == nil or winbar == "" then
+            vim.api.nvim_set_option("winbar", "%=%R %M %f")
+        else
+            vim.api.nvim_set_option("winbar", "")
+        end
+    end
+)
 
 -- Select the last changed text
 vim.keymap.set("n", "gp", "`[v`]")
-
