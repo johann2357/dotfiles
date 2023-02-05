@@ -23,7 +23,7 @@ vim.opt.splitright = true
 -- default 4000ms - reduce it for better user experience
 vim.opt.updatetime = 50
 -- custom
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 vim.opt.colorcolumn = "120"
 vim.opt.ruler = true
 vim.opt.foldenable = false
@@ -51,5 +51,17 @@ M.toggle_winbar = function()
         vim.api.nvim_set_option("winbar", "")
     end
 end
+
+vim.opt.wildignore:append({
+    '*.so',
+    '*.swp',
+    '*.pyc',
+    '*.out',
+    '*.out',
+    '**/__pycache__/*',
+    '**/.git/*',
+    '**/node_modules/*',
+    '**/dist/*',
+})
 
 return M

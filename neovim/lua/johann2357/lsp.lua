@@ -10,6 +10,7 @@ lsp.ensure_installed({
   'vuels',
   'yamlls',
   'marksman',
+  'texlab',
 })
 
 -- Fix Undefined global 'vim'

@@ -1,10 +1,11 @@
 require("hardline").setup {
-    theme = "gruvbox_minimal",
+    -- theme = "gruvbox_minimal",
+    theme = "catppuccin_minimal",
     bufferline = true,
     bufferline_settings = {
         use_harpoon_marks = true,
         show_index = true,
-        separator = '|',
+        separator = ' ',
         -- exclude_terminal = true,
     },
     sections = {

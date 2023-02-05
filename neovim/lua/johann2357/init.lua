@@ -24,14 +24,3 @@ require("johann2357.zenmode")
 --     end,
 -- })
 
-vim.opt.wildignore:append({
-    '*.so',
-    '*.swp',
-    '*.pyc',
-    '*.out',
-    '*.out',
-    '**/__pycache__/*',
-    '**/.git/*',
-    '**/node_modules/*',
-    '**/dist/*',
-})
