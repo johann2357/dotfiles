@@ -193,17 +193,17 @@ groups = [
     Group(
         name="1",
         screen_affinity=0,
-        matches=[Match(title=["Brave"])]
+        matches=[Match(title=["Brave"])],
     ),
     Group(
         name="2",
         screen_affinity=0,
-        matches=[Match(title=["Alacritty"])]
+        matches=[Match(title=["Alacritty"])],
     ),
     Group(
         name="3",
         screen_affinity=0,
-        matches=[Match(title=["Chrome"])]
+        matches=[Match(title=["Google Chrome"])],
     ),
     Group(
         name="4",
@@ -216,7 +216,7 @@ groups = [
     Group(
         name="6",
         screen_affinity=1,
-        matches=[Match(title=["Slack"])]
+        matches=[Match(title=["Slack"])],
     ),
 ]
 
