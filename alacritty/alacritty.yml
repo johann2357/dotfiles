@@ -123,19 +123,19 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: MesloLGM Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Regular
   bold:
-    family: MesloLGM Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Bold
   italic:
-    family: MesloLGM Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Italic
   bold_italic:
-    family: MesloLGM Nerd Font Mono
-    style: Italic
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold Italic
 #font:
   # Normal (roman) font face
   #normal:
