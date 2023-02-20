@@ -69,3 +69,4 @@ okular
 rustup
 xdg-desktop-portal
 pavucontrol
+xkeycaps

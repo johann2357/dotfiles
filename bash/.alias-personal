@@ -22,6 +22,8 @@ alias fgrep='fgrep --color=auto'
 # keyboard
 alias give-me-qwerty-us="sudo localectl set-x11-keymap us"
 alias give-me-dvorak-us="sudo localectl set-x11-keymap us"
+alias dvorak="setxkbmap dvorak"
+alias qwerty="setxkbmap us"
 
 # free
 alias free="free -mt"
