@@ -70,3 +70,6 @@ rustup
 xdg-desktop-portal
 pavucontrol
 xkeycaps
+kubectl
+helm
+minikube
