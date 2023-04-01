@@ -27,26 +27,19 @@ require('lazy').setup(
         'nvim-treesitter/nvim-treesitter-textobjects',
         'nvim-treesitter/nvim-treesitter-context',
         -- LSP
-        {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v1.x',
-            dependencies = {
-                -- LSP Support
-                {'neovim/nvim-lspconfig'},
-                {'williamboman/mason.nvim'},
-                {'williamboman/mason-lspconfig.nvim'},
-                -- Autocompletion
-                {'saadparwaiz1/cmp_luasnip'},
-                {'hrsh7th/nvim-cmp'},
-                {'hrsh7th/cmp-nvim-lsp'},
-                {'hrsh7th/cmp-nvim-lua'},
-                {'hrsh7th/cmp-buffer'},
-                {'hrsh7th/cmp-path'},
-                -- Snippets
-                {'L3MON4D3/LuaSnip'},
-                {'rafamadriz/friendly-snippets'},
-            }
-        },
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        -- Autocompletion
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        -- Snippets
+        {'L3MON4D3/LuaSnip'},
+        {'rafamadriz/friendly-snippets'},
         -- productivity
         {
             'nvim-telescope/telescope.nvim',
