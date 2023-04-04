@@ -38,8 +38,10 @@ require('lazy').setup(
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
         -- Snippets
-        {'L3MON4D3/LuaSnip'},
-        {'rafamadriz/friendly-snippets'},
+        'L3MON4D3/LuaSnip',
+        'rafamadriz/friendly-snippets',
+        -- Custom styles
+        'onsails/lspkind.nvim',
         -- productivity
         {
             'nvim-telescope/telescope.nvim',
