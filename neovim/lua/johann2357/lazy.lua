@@ -51,6 +51,7 @@ require('lazy').setup(
         },
         'ThePrimeagen/git-worktree.nvim',
         'ThePrimeagen/harpoon',
+        'github/copilot.vim',
         'numToStr/Comment.nvim',
         'mbbill/undotree',
         'folke/zen-mode.nvim',
