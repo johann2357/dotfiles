@@ -5,6 +5,7 @@ tmux
 fzf
 pipx
 bash
+zsh
 # Neovim
 cmake
 luarocks
@@ -24,8 +25,7 @@ httpie
 miniconda
 alacritty
 # Cask
-# homebrew/cask/amethyst
+homebrew/cask/amethyst
 homebrew/cask/aws-vault
 homebrew/cask/docker
-koekeishiya/formulae/yabai
-koekeishiya/formulae/skhd
+homebrew/cask/1password-cli
