@@ -147,6 +147,11 @@ lspconfig.vuels.setup({
 lspconfig.yamlls.setup({
     on_attach = lsp_attach,
     capabilities = lsp_capabilities,
+    settings = {
+        yaml = {
+            keyOrdering = false,
+        }
+    },
 })
 
 lspconfig.marksman.setup({
