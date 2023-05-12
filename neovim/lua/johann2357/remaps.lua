@@ -80,3 +80,6 @@ vim.keymap.set(
 
 -- Select the last changed text
 vim.keymap.set("n", "gp", "`[v`]")
+
+-- Format JSON in visual selection
+vim.keymap.set("v", "Q", ":!jq '.'<CR>")
