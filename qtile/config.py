@@ -1,9 +1,13 @@
+import subprocess
 from enum import Enum
 
+import psutil
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+from libqtile.log_utils import logger
 from libqtile.utils import guess_terminal
+from libqtile.widget import base
 
 
 class Gruvbox(str, Enum):
@@ -250,11 +254,12 @@ layouts = [
         border_norma=theme.dark2,
         max_ratio=0.69,
         ratio=0.5,
-        margin=[3, 3, 3, 3],
+        margin=[1, 1, 1, 1],
         border_on_single=False,
-        border_width=3,
+        border_width=1,
+        expand=True,
     ),
-    layout.Max(margin=[3, 3, 3, 3]),
+    layout.Max(margin=[1, 1, 1, 1]),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -277,7 +282,7 @@ extension_defaults = widget_defaults.copy()
 
 
 def create_window_name_widget() -> widget.WindowName:
-    max_chars = 39
+    max_chars = 69
 
     def window_name_parse(name: str) -> str:
         if name == "goto":
@@ -297,9 +302,181 @@ def create_window_name_widget() -> widget.WindowName:
     )
 
 
+class ShowHideTextBox(widget.TextBox):
+
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault(
+            "mouse_callbacks",
+            {
+                "Button1": self.mouse_click,
+            },
+        )
+        self._icon_expand = "▾"
+        kwargs.setdefault("text", self._icon_expand)
+        super().__init__(*args, **kwargs)
+
+    def calculate_text(self) -> str:
+        return "implement this"
+
+    def mouse_click(self):
+        self.update(text=self.calculate_text())
+
+    def mouse_enter(self, *args, **kwargs):
+        self.update(text=self.calculate_text())
+
+    def mouse_leave(self, *args, **kwargs):
+        self.update(text=self._icon_expand)
+
+
+class WlanTextBox(ShowHideTextBox):
+
+    def calculate_text(self) -> str:
+        interface = "wlan0"
+        try:
+            essid, quality = widget.wlan.get_status(interface)
+            disconnected = essid is None
+            if disconnected:
+                return "disconnected"
+
+            percent = quality / 70
+            return f"{percent:2.0%} {essid} "
+        except EnvironmentError:
+            logger.error(
+                "%s: Probably your wlan device is switched off or "
+                " otherwise not present in your system.",
+                self.__class__.__name__,
+            )
+
+
+def get_volume() -> int:
+    get_volume_command = "pamixer --get-volume"
+    check_mute_command = "pamixer --get-mute"
+    check_mute_string = "true"
+    try:
+        mixer_out = subprocess.getoutput(get_volume_command)
+    except subprocess.CalledProcessError:
+        return -1
+
+    check_mute = subprocess.getoutput(check_mute_command)
+
+    if check_mute_string in check_mute:
+        return -1
+
+    return int(mixer_out)
+
+
+class VolumeTextBox(ShowHideTextBox):
+
+    def calculate_text(self) -> str:
+        volume = get_volume()
+        if volume == -1:
+            return "Muted"
+        return f"{volume}% "
+
+
+class VolumeIcon(widget.PulseVolume):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.current_icon = "audio-volume-muted"
+
+    def _configure(self, qtile, parent_bar):
+        super()._configure(qtile, parent_bar)
+        self.setup_images()
+
+    def get_volume(self):
+        return get_volume()
+
+    def timer_setup(self) -> None:
+        self.update()
+        self.timeout_add(self.update_interval, self.timer_setup)
+
+    def _get_icon_key(self, volume: int) -> str:
+        if volume <= 0:
+            img_name = "audio-volume-muted"
+        elif volume <= 30:
+            img_name = "audio-volume-low"
+        elif volume < 80:
+            img_name = "audio-volume-medium"
+        else:  # self.volume >= 80:
+            img_name = "audio-volume-high"
+
+        return img_name
+
+    def draw(self):
+        if self.theme_path:
+            self.drawer.clear(self.background or self.bar.background)
+            self.drawer.ctx.set_source(self.surfaces[self.current_icon])
+            self.drawer.ctx.paint()
+            self.drawer.draw(offsetx=self.offset, offsety=self.offsety, width=self.length)
+        else:
+            base._TextBox.draw(self)
+
+    def update(self):
+        """
+        same method as in Volume widgets except that here we don't need to
+        manually re-schedule update
+        """
+        vol = self.get_volume()
+        if vol != self.volume:
+            self.current_icon = self._get_icon_key(volume=vol)
+            self.volume = vol
+            self.draw()
+
+
+class BatteryTextBox(ShowHideTextBox):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._battery = widget.battery.load_battery()
+
+    def calculate_text(self) -> str:
+        try:
+            status = self._battery.update_status()
+        except RuntimeError as e:
+            return "Error: {}".format(e)
+        return f"{status.percent:2.0%} "
+
+
+class MemoryTextBox(ShowHideTextBox):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.measures = {
+            "G": 1024 * 1024 * 1024,
+            "M": 1024 * 1024,
+            "K": 1024,
+            "B": 1,
+        }
+        self.measure_mem = "G"
+        self.calc_mem = self.measures[self.measure_mem]
+        self.format = "{MemUsed:.2f} / {MemTotal:.2f} {mm} "
+
+    def calculate_text(self) -> str:
+        mem = psutil.virtual_memory()
+        val = {}
+        val["MemUsed"] = mem.used / self.calc_mem
+        val["MemTotal"] = mem.total / self.calc_mem
+        val["MemFree"] = mem.free / self.calc_mem
+        val["MemPercent"] = mem.percent
+        val["mm"] = self.measure_mem
+        return self.format.format(**val)
+
+
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
+            size=19,
+            # background=theme.dark0_hard,  # Gruvbox
+            # background="#135868",  # lakerside-5.jpg
+            # background="#221a31",  # lake-sunset.jpg
+            background="#003558",  # ocean-fishing.jpg
+            opacity=0.96,
+            margin=[1, 3, 1, 3],  # [N E S W]
+            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color="#221a31",  # lake-sunset.jpg
+            border_color="#003558",  # ocean-fishing.jpg
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             widgets=[
                 widget.CurrentLayoutIcon(),
                 widget.GroupBox(
@@ -315,86 +492,48 @@ screens = [
                     prompt=" > ",
                 ),
                 create_window_name_widget(),
-                widget.Clock(
-                    format="%a %d %b  %H:%M",
-                ),
                 widget.Spacer(),
+                widget.Notify(),
                 widget.Systray(),
-                # widget.KeyboardLayout(
-                #     fmt=" ({})",
-                # ),
-                widget.Net(
-                    prefix="M",
-                    format="{down} ",
-                ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/network-transmit-receive.svg",
-                ),
-                # widget.NetIcon(
-                #     scale=1,
-                #     theme_path="/usr/share/icons/Papirus/24x24/panel/",
-                # ),
-                widget.Net(
-                    prefix="M",
-                    format="{up} ",
-                ),
                 widget.BatteryIcon(
                     scale=1,
                     theme_path="/usr/share/icons/Papirus-Dark/24x24/panel/",
+                    update_interval=60,
                 ),
-                widget.Battery(
-                    format="{percent:2.0%} ",
-                    unknown_char="~",
-                    charge_char="^",
-                    discharge_char="v",
-                    full_char="",
-                    show_short_text=False,
-                ),
-                widget.PulseVolume(
-                    get_volume_command="pamixer --get-volume",
-                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
-                    volume_app="pamixer",
-                ),
-                widget.PulseVolume(
-                    fmt="{} ",
-                    get_volume_command="pamixer --get-volume",
-                    volume_app="pamixer",
-                ),
+                BatteryTextBox(),
                 widget.Image(
                     filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",
                 ),
-                widget.Memory(
-                    format="{MemUsed:.2f}{mm} ",
-                    measure_mem="G",
-                ),
+                MemoryTextBox(),
                 widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/indicator-cpufreq-25.svg",
+                    filename="/usr/share/icons/Papirus/24x24/panel/network-wireless-secure-signal-good.svg",
                 ),
-                widget.CPU(
-                    format="{load_percent}% ",
+                WlanTextBox(),
+                VolumeIcon(
+                    get_volume_command="pamixer --get-volume",
+                    check_mute_command="pamixer --get-mute",
+                    check_mute_string="true",
+                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                    volume_app="pamixer",
+                    update_interval=30,
                 ),
-                widget.Image(
-                    filename="/usr/share/icons/Papirus/24x24/panel/psensor_normal.svg",
+                VolumeTextBox(),
+                widget.Clock(
+                    format=" %a %d %b %H:%M",
                 ),
-                widget.ThermalSensor(
-                    format="{temp:.1f}{unit}",
-                ),
-                widget.CheckUpdates(
-                    update_interval=60 * 60 * 3,
-                    display_format="  {updates}",
-                ),
+                # widget.Image(
+                #     filename="/usr/share/icons/Papirus/24x24/panel/indicator-cpufreq-25.svg",
+                # ),
+                # widget.CPU(
+                #     format="{load_percent}% ",
+                # ),
+                # widget.Image(
+                #     filename="/usr/share/icons/Papirus/24x24/panel/psensor_normal.svg",
+                # ),
+                # widget.ThermalSensor(
+                #     format="{temp:.1f}{unit}",
+                # ),
             ],
-            size=19,
-            # background=theme.dark0_hard,  # Gruvbox
-            # background="#135868",  # lakerside-5.jpg
-            # background="#221a31",  # lake-sunset.jpg
-            background="#003558",  # ocean-fishing.jpg
-            opacity=0.96,
-            margin=[5, 10, 5, 10],
-            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color="#221a31",  # lake-sunset.jpg
-            border_color="#003558",  # ocean-fishing.jpg
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
     Screen(),
