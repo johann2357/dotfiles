@@ -1,6 +1,7 @@
 import subprocess
 from enum import Enum
 
+import iwlib
 import psutil
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -333,15 +334,16 @@ class WlanTextBox(ShowHideTextBox):
     def calculate_text(self) -> str:
         interface = "wlan0"
         try:
-            essid, quality = widget.wlan.get_status(interface)
+            interface = iwlib.get_iwconfig(interface)
+            essid = interface["ESSID"].decode("utf-8")
             disconnected = essid is None
             if disconnected:
-                return "disconnected"
-
+                return "disconnected "
+            quality = interface["stats"]["quality"]
             percent = quality / 70
             return f"{percent:2.0%} {essid} "
-        except EnvironmentError:
-            logger.error(
+        except Exception:
+            logger.exception(
                 "%s: Probably your wlan device is switched off or "
                 " otherwise not present in your system.",
                 self.__class__.__name__,
