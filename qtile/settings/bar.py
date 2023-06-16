@@ -294,6 +294,30 @@ class CPUTextBox(ShowHideTextBox):
         return f"{status.current_freq}/{status.max_freq} GHz {status.load_percent}% "
 
 
+def get_status_sensors() -> float:
+    temps = psutil.sensors_temperatures(fahrenheit=False)
+    logger.warning("[sensors] %s", str(temps))
+
+    if "coretemp" not in temps:
+        return 0
+
+    return temps["coretemp"][0].current
+
+
+def get_icon_sensors(status: float) -> str:
+    logger.warning("[sensors] %s", str(status))
+    if status > 70:
+        return "psensor_hot"
+
+    return "psensor_normal"
+
+
+class SensorsTextBox(ShowHideTextBox):
+    def calculate_text(self) -> str:
+        status = get_status_sensors()
+        return f"{status:.1f}°C "
+
+
 class BatteryTextBox(ShowHideTextBox):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -419,12 +443,19 @@ def create_bar(theme) -> bar.Bar:
                 filename="/usr/share/icons/Papirus/24x24/panel/indicator-sensors-memory.svg",
             ),
             MemoryTextBox(),
-            # widget.Image(
-            #     filename="/usr/share/icons/Papirus/24x24/panel/psensor_normal.svg",
-            # ),
-            # widget.ThermalSensor(
-            #     format="{temp:.1f}{unit}",
-            # ),
+            IconWidget(
+                icon_status=IconStatus(
+                    icon_names=[
+                        "psensor_hot",
+                        "psensor_normal",
+                    ],
+                    current_icon="psensor_normal",
+                    get_status_function=get_status_sensors,
+                    get_icon_function=get_icon_sensors,
+                    theme_path="/usr/share/icons/Papirus/24x24/panel/",
+                ),
+            ),
+            SensorsTextBox(),
             IconWidget(
                 icon_status=IconStatus(
                     icon_names=[
