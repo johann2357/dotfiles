@@ -110,7 +110,6 @@ def setup_keys(
             lazy.prev_screen(),
             desc="Move to prev screen",
         ),
-
         # Toggle between split and unsplit sides of stack.
         # Split = all windows displayed
         # Unsplit = 1 window displayed, like Max layout, but still with
@@ -128,7 +127,12 @@ def setup_keys(
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-        Key([mod], "space", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+        Key(
+            [mod],
+            "space",
+            lazy.spawncmd(),
+            desc="Spawn a command using a prompt widget",
+        ),
         # MEDIA KEYS
         #   - Volume
         Key(
