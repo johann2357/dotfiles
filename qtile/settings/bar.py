@@ -1,368 +1,35 @@
-import dataclasses
-import subprocess
-from typing import Any, Callable, Union
-
-import iwlib
-import psutil
-from libqtile import bar, images, widget
+from libqtile import bar, widget
 from libqtile.log_utils import logger
-from libqtile.widget import base
 
-
-@dataclasses.dataclass
-class IconStatus:
-    icon_names: list[str]
-    current_icon: str
-    get_status_function: Callable
-    get_icon_function: Callable
-    current_status: Any = None
-    theme_path: str = "/usr/share/icons/Papirus-Dark/24x24/panel/"
-
-    def get_icon_for_status(self) -> str:
-        """Retrieve specific icon related to the respective status."""
-        self.current_status = self.get_status_function()
-        self.current_icon = self.get_icon_function(self.current_status)
-        return self.current_icon
-
-
-class IconWidget(base._Widget):
-    """Battery life indicator widget."""
-
-    orientations = base.ORIENTATION_HORIZONTAL
-    defaults: list[tuple[str, Any, str]] = [
-        (
-            "update_interval",
-            60,
-            "Seconds between status updates",
-        ),
-        (
-            "scale",
-            1,
-            "Scale factor relative to the bar height. Defaults to 1",
-        ),
-    ]
-
-    def __init__(self, icon_status: IconStatus, **config) -> None:
-        super().__init__(length=bar.CALCULATED, **config)
-        # base._Widget.__init__(self, length=bar.CALCULATED, **config)
-        self.add_defaults(self.defaults)
-        self.scale: float = 1.0 / self.scale
-
-        self.length_type = bar.STATIC
-        self.length = 0
-        self.image_padding = 0
-        self.surfaces = {}  # type: dict[str, Img]
-
-        self.icon_status = icon_status
-
-    def _configure(self, qtile, bar) -> None:
-        super()._configure(qtile, bar)
-        # base._Widget._configure(self, qtile, bar)
-        self.image_padding = 0
-        self.setup_images()
-        self.image_padding = (self.bar.height - self.bar.height / 5) / 2
-
-    def timer_setup(self) -> None:
-        self.update()
-        self.timeout_add(self.update_interval, self.timer_setup)
-
-    def setup_images(self) -> None:
-        d_imgs = images.Loader(self.icon_status.theme_path)(
-            *self.icon_status.icon_names
-        )
-
-        new_height = self.bar.height * self.scale - self.image_padding
-        for key, img in d_imgs.items():
-            img.resize(height=new_height)
-            if img.width > self.length:
-                self.length = int(img.width + self.image_padding * 2)
-            self.surfaces[key] = img.pattern
-
-    def draw(self) -> None:
-        self.drawer.clear(self.background or self.bar.background)
-        self.drawer.ctx.set_source(self.surfaces[self.icon_status.current_icon])
-        self.drawer.ctx.paint()
-        self.drawer.draw(offsetx=self.offset, offsety=self.offsety, width=self.length)
-
-    def update(self) -> None:
-        old_icon = self.icon_status.current_icon
-        new_icon = self.icon_status.get_icon_for_status()
-        if new_icon != old_icon:
-            self.draw()
-
-
-class ShowHideTextBox(widget.TextBox):
-    def __init__(self, *args, **kwargs):
-        kwargs.setdefault(
-            "mouse_callbacks",
-            {
-                "Button1": self.mouse_click,
-            },
-        )
-        self._icon_expand = "▾"
-        kwargs.setdefault("text", self._icon_expand)
-        super().__init__(*args, **kwargs)
-
-    def calculate_text(self) -> str:
-        return "implement this"
-
-    def mouse_click(self):
-        self.update(text=self.calculate_text())
-
-    def mouse_enter(self, *args, **kwargs):
-        self.update(text=self.calculate_text())
-
-    def mouse_leave(self, *args, **kwargs):
-        self.update(text=self._icon_expand)
-
-
-@dataclasses.dataclass
-class WlanInfo:
-    essid: Union[str, None]
-    quality: Union[float, None]
-
-    def get_quality_percentage(self) -> float:
-        if self.quality is None:
-            return 0
-        return self.quality / 70
-
-
-def get_status_wlan(interface: str = "wlan0") -> WlanInfo:
-    interface = iwlib.get_iwconfig(interface)
-    return WlanInfo(
-        essid=interface["ESSID"].decode("utf-8"),
-        quality=interface["stats"]["quality"],
-    )
-
-
-def get_icon_wlan(status: WlanInfo):
-    logger.warning("[wlan] %s %s", str(status), str(status.get_quality_percentage()))
-
-    if status.essid is None:
-        return "network-wireless-disconnected"
-
-    quality = status.get_quality_percentage()
-    if quality < 0.10:
-        return "network-wireless-connected-00"
-    elif quality < 0.30:
-        return "network-wireless-connected-25"
-    elif quality < 0.60:
-        return "network-wireless-connected-50"
-    elif quality < 0.90:
-        return "network-wireless-connected-75"
-    else:
-        return "network-wireless-connected-100"
-
-
-class WlanTextBox(ShowHideTextBox):
-    def calculate_text(self) -> str:
-        interface = "wlan0"
-        try:
-            interface = iwlib.get_iwconfig(interface)
-            essid = interface["ESSID"].decode("utf-8")
-            disconnected = essid is None
-            if disconnected:
-                return "disconnected "
-            quality = interface["stats"]["quality"]
-            percent = quality / 70
-            frequency = interface["Frequency"].decode("utf-8")
-            return f"{percent:2.0%} {essid} {frequency}"
-        except Exception:
-            logger.exception(
-                "%s: Probably your wlan device is switched off or "
-                " otherwise not present in your system.",
-                self.__class__.__name__,
-            )
-
-
-def get_volume() -> int:
-    get_volume_command = "pamixer --get-volume"
-    check_mute_command = "pamixer --get-mute"
-    check_mute_string = "true"
-    try:
-        mixer_out = subprocess.getoutput(get_volume_command)
-    except subprocess.CalledProcessError:
-        return -1
-
-    check_mute = subprocess.getoutput(check_mute_command)
-
-    if check_mute_string in check_mute:
-        return -1
-
-    return int(mixer_out)
-
-
-class VolumeTextBox(ShowHideTextBox):
-    def calculate_text(self) -> str:
-        volume = get_volume()
-        if volume == -1:
-            return "Muted"
-        return f"{volume}% "
-
-
-class VolumeIcon(widget.PulseVolume):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.current_icon = "audio-volume-muted"
-
-    def _configure(self, qtile, parent_bar):
-        super()._configure(qtile, parent_bar)
-        self.setup_images()
-
-    def get_volume(self):
-        return get_volume()
-
-    def timer_setup(self) -> None:
-        self.update()
-        self.timeout_add(self.update_interval, self.timer_setup)
-
-    def _get_icon_key(self, volume: int) -> str:
-        if volume <= 0:
-            img_name = "audio-volume-muted"
-        elif volume <= 30:
-            img_name = "audio-volume-low"
-        elif volume < 80:
-            img_name = "audio-volume-medium"
-        else:  # self.volume >= 80:
-            img_name = "audio-volume-high"
-
-        return img_name
-
-    def draw(self):
-        if self.theme_path:
-            self.drawer.clear(self.background or self.bar.background)
-            self.drawer.ctx.set_source(self.surfaces[self.current_icon])
-            self.drawer.ctx.paint()
-            self.drawer.draw(
-                offsetx=self.offset, offsety=self.offsety, width=self.length
-            )
-        else:
-            base._TextBox.draw(self)
-
-    def update(self):
-        """
-        same method as in Volume widgets except that here we don't need to
-        manually re-schedule update
-        """
-        vol = self.get_volume()
-        if vol != self.volume:
-            self.current_icon = self._get_icon_key(volume=vol)
-            self.volume = vol
-            self.draw()
-
-
-@dataclasses.dataclass
-class CPUInfo:
-    load_percent: float
-    current_freq: float
-    max_freq: float
-    min_freq: float
-
-
-def get_status_cpu() -> CPUInfo:
-    # cpu_usage = psutil.cpu_percent(interval=1)
-    load_percent = round(psutil.cpu_percent(), 1)
-    freq = psutil.cpu_freq()
-    freq_current = round(freq.current / 1000, 1)
-    freq_max = round(freq.max / 1000, 1)
-    freq_min = round(freq.min / 1000, 1)
-
-    return CPUInfo(
-        load_percent=load_percent,
-        current_freq=freq_current,
-        max_freq=freq_max,
-        min_freq=freq_min,
-    )
-
-
-def get_icon_cpu(status: CPUInfo):
-    logger.warning("[cpu] %s", str(status))
-
-    if status.load_percent < 25:
-        return "indicator-cpufreq-25"
-    elif status.load_percent < 50:
-        return "indicator-cpufreq-50"
-    elif status.load_percent < 75:
-        return "indicator-cpufreq-75"
-    else:
-        return "indicator-cpufreq-100"
-
-
-class CPUTextBox(ShowHideTextBox):
-    def calculate_text(self) -> str:
-        status = get_status_cpu()
-        return f"{status.current_freq}/{status.max_freq} GHz {status.load_percent}% "
-
-
-def get_status_sensors() -> float:
-    temps = psutil.sensors_temperatures(fahrenheit=False)
-    logger.warning("[sensors] %s", str(temps))
-
-    if "coretemp" not in temps:
-        return 0
-
-    return temps["coretemp"][0].current
-
-
-def get_icon_sensors(status: float) -> str:
-    logger.warning("[sensors] %s", str(status))
-    if status > 70:
-        return "psensor_hot"
-
-    return "psensor_normal"
-
-
-class SensorsTextBox(ShowHideTextBox):
-    def calculate_text(self) -> str:
-        status = get_status_sensors()
-        return f"{status:.1f}°C "
-
-
-class BatteryTextBox(ShowHideTextBox):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._battery = widget.battery.load_battery()
-
-    def calculate_text(self) -> str:
-        try:
-            status = self._battery.update_status()
-            logger.warning("[battery] %s", str(status))
-        except RuntimeError as e:
-            return "Error: {}".format(e)
-        state = "idle"
-        if status.state == widget.battery.BatteryState.DISCHARGING:
-            state = "discharging"
-        elif status.state == widget.battery.BatteryState.CHARGING:
-            state = "charging"
-        elif status.state == widget.battery.BatteryState.FULL:
-            state = "full"
-        elif status.state == widget.battery.BatteryState.EMPTY:
-            state = "empty"
-        return f"{status.percent:2.0%} {state} "
-
-
-class MemoryTextBox(ShowHideTextBox):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.measures = {
-            "G": 1024 * 1024 * 1024,
-            "M": 1024 * 1024,
-            "K": 1024,
-            "B": 1,
-        }
-        self.measure_mem = "G"
-        self.calc_mem = self.measures[self.measure_mem]
-        self.format = "{MemUsed:.2f}/{MemTotal:.2f} {mm}B "
-
-    def calculate_text(self) -> str:
-        mem = psutil.virtual_memory()
-        val = {}
-        val["MemUsed"] = mem.used / self.calc_mem
-        val["MemTotal"] = mem.total / self.calc_mem
-        val["MemFree"] = mem.free / self.calc_mem
-        val["MemPercent"] = mem.percent
-        val["mm"] = self.measure_mem
-        return self.format.format(**val)
+from settings.widgets.base import (
+    IconStatus,
+    IconWidget,
+)
+from settings.widgets.battery import (
+    BatteryTextBox,
+)
+from settings.widgets.cpu import (
+    get_icon_cpu,
+    get_status_cpu,
+    CPUTextBox,
+)
+from settings.widgets.memory import (
+    MemoryTextBox,
+)
+from settings.widgets.sensors import (
+    get_icon_sensors,
+    get_status_sensors,
+    SensorsTextBox,
+)
+from settings.widgets.volume import (
+    VolumeIcon,
+    VolumeTextBox,
+)
+from settings.widgets.wlan import (
+    get_icon_wlan,
+    get_status_wlan,
+    WlanTextBox,
+)
 
 
 def create_window_name_widget() -> widget.WindowName:
@@ -387,6 +54,7 @@ def create_window_name_widget() -> widget.WindowName:
 
 
 def create_bar(theme) -> bar.Bar:
+    logger.warning("[bar] Creating bar ...")
     return bar.Bar(
         size=19,
         # background=theme.dark0_hard,  # Gruvbox
