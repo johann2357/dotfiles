@@ -6,3 +6,4 @@ authy
 slack-desktop
 postman9-bin
 xscreensaver-arch-logo
+nordvpn-bin
