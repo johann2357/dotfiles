@@ -53,6 +53,11 @@ def create_window_name_widget() -> widget.WindowName:
     )
 
 
+def parse_text_notify(text: str) -> str:
+    logger.warning(f"[notify] Parsing text: `{text}`")
+    return text.split("-")[0]
+
+
 def create_bar(theme) -> bar.Bar:
     logger.warning("[bar] Creating bar ...")
     return bar.Bar(
@@ -83,7 +88,7 @@ def create_bar(theme) -> bar.Bar:
             ),
             create_window_name_widget(),
             widget.Spacer(),
-            widget.Notify(),
+            widget.Notify(parse_text=parse_text_notify),
             widget.Systray(),
             widget.BatteryIcon(
                 scale=1,
