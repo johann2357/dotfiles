@@ -25,14 +25,14 @@ local lsp_attach = function (_, bufnr)
     local opts = {buffer = bufnr, remap = false}
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "<leader>vt", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "<leader>vi", function() vim.lsp.buf.implementation() end, opts)
     vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>vq", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>va", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vh", function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set("n", "<leader>v<down>", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "<leader>v<up>", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "<leader>vt", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>vn", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "<leader>vp", function() vim.diagnostic.goto_prev() end, opts)
 end
 
 cmp.setup({

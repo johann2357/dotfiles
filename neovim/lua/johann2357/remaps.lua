@@ -8,6 +8,8 @@ vim.keymap.set("n", "<Leader><Esc>", "<cmd>noh<CR>")
 vim.keymap.set("v", "<Leader>y", '"+y')
 vim.keymap.set("v", "<Leader>p", '"+p')
 vim.keymap.set("n", "<Leader>p", '"+p')
+vim.keymap.set("n", "<Leader>x", "<cmd>let @+ = expand('%')<CR>")
+
 
 -- Keep it centered
 vim.keymap.set("n", "n", "nzzzv")
@@ -67,7 +69,7 @@ vim.keymap.set("n", "<expr> j", '(v:count > 13 ? "m\'" . v:count : "") . "j"')
 -- Toggle winbar
 vim.keymap.set(
     "n",
-    "<Leader>x",
+    "<Leader>X",
     function()
         local winbar = vim.api.nvim_get_option("winbar")
         if winbar == nil or winbar == "" then
