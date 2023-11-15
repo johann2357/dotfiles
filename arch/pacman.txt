@@ -74,3 +74,4 @@ kubectl
 helm
 minikube
 dosfstools
+tk

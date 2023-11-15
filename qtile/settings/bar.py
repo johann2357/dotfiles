@@ -1,3 +1,5 @@
+import re
+
 from libqtile import bar, widget
 from libqtile.log_utils import logger
 
@@ -32,6 +34,9 @@ from settings.widgets.wlan import (
 )
 
 
+CLEAN_MARKUP_NOTIFY = re.compile("<.*?>")
+
+
 def create_window_name_widget() -> widget.WindowName:
     max_chars = 69
 
@@ -55,7 +60,11 @@ def create_window_name_widget() -> widget.WindowName:
 
 def parse_text_notify(text: str) -> str:
     logger.warning(f"[notify] Parsing text: `{text}`")
-    return text.split("-")[0]
+    text = re.sub(CLEAN_MARKUP_NOTIFY, "", text)
+    max_chars = 69
+    new_text = f"{text[:max_chars]}..." if len(text) > max_chars else text
+    logger.warning(f"[notify] Displaying text of len `{len(text)}`: `{new_text}`")
+    return new_text
 
 
 def create_bar(theme) -> bar.Bar:
@@ -88,7 +97,10 @@ def create_bar(theme) -> bar.Bar:
             ),
             create_window_name_widget(),
             widget.Spacer(),
-            widget.Notify(parse_text=parse_text_notify),
+            widget.Notify(
+                parse_text=parse_text_notify,
+                default_timeout=13,
+            ),
             widget.Systray(),
             widget.BatteryIcon(
                 scale=1,
