@@ -164,17 +164,17 @@ lspconfig.texlab.setup({
     capabilities = lsp_capabilities,
 })
 
-lspconfig.ruff_lsp.setup {
-  on_attach = lsp_attach,
-  init_options = {
-    settings = {
-      -- Any extra CLI arguments for `ruff` go here.
-      args = {
-        "--line_length=120",
-      },
-    }
-  }
-}
+-- lspconfig.ruff_lsp.setup {
+--   on_attach = lsp_attach,
+--   init_options = {
+--     settings = {
+--       -- Any extra CLI arguments for `ruff` go here.
+--       args = {
+--         "--line_length=120",
+--       },
+--     }
+--   }
+-- }
 
 vim.diagnostic.config({
     virtual_text = true

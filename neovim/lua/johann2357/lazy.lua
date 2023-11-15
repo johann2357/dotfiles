@@ -45,8 +45,8 @@ require('lazy').setup(
         -- productivity
         {
             'nvim-telescope/telescope.nvim',
-            version = '0.1.1',
-            -- branch = '0.1.x',
+            -- version = '0.1.4',
+            branch = '0.1.x',
             dependencies = { {'nvim-lua/plenary.nvim'} }
         },
         'ThePrimeagen/git-worktree.nvim',
