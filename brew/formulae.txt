@@ -11,7 +11,7 @@ cmake
 luarocks
 pkg-config
 --HEAD luajit
---HEAD neovim
+# --HEAD neovim
 # Term utils
 htop
 tree
@@ -22,7 +22,7 @@ gcc
 ripgrep
 fd
 httpie
-miniconda
+# miniconda
 alacritty
 # Cask
 homebrew/cask/amethyst
