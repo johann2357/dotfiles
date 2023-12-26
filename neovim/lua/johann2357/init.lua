@@ -14,3 +14,9 @@ require('johann2357.lazy')
 --     end,
 -- })
 
+vim.api.nvim_exec([[
+    augroup jinja2
+        autocmd!
+        autocmd BufNewFile,BufRead *.jinja2 setfiletype htmldjango
+    augroup END
+]], false)

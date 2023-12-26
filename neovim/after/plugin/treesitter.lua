@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup {
     "markdown",
     "typescript",
     "html",
+    "htmldjango",
     "css",
     "vue",
     "rust",
