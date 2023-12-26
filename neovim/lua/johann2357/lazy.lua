@@ -56,6 +56,7 @@ require('lazy').setup(
         'mbbill/undotree',
         'folke/zen-mode.nvim',
         -- look and feel
+        -- 'dstein64/vim-startuptime',
         'nvim-tree/nvim-web-devicons',
         {
             'catppuccin/nvim',

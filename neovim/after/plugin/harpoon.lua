@@ -4,7 +4,14 @@ require("harpoon").setup({
         save_on_change = true,
         enter_on_sendcmd = false,
         tmux_autoclose_windows = false,
-        excluded_filetypes = { "harpoon" }
+        -- filetypes that you want to prevent from adding to the harpoon list menu.
+        excluded_filetypes = { "harpoon" },
+        -- set marks specific to each git branch inside git repository
+        mark_branch = true,
+        -- enable tabline with harpoon marks
+        tabline = true,
+        tabline_prefix = "   ",
+        tabline_suffix = "   ",
     },
     menu = {
         width = vim.api.nvim_win_get_width(0) - 10,

@@ -6,7 +6,7 @@ require("hardline").setup {
         use_harpoon_marks = true,
         show_index = true,
         separator = ' ',
-        -- exclude_terminal = true,
+        exclude_terminal = true,
     },
     sections = {
         -- {class = 'mode', item = require('hardline.parts.mode').get_item},
