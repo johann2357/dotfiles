@@ -66,7 +66,7 @@ require('lazy').setup(
         },
         {
             'johann2357/nvim-hardline',
-            branch = 'harpoon',
+            branch = 'harpoon-support',
         },
     },
     {
