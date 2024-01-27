@@ -12,6 +12,7 @@ mason_lspconfig.setup({
         "yamlls",
         "marksman",
         "texlab",
+        "clangd",
     }
 })
 
@@ -160,6 +161,11 @@ lspconfig.marksman.setup({
 })
 
 lspconfig.texlab.setup({
+    on_attach = lsp_attach,
+    capabilities = lsp_capabilities,
+})
+
+lspconfig.clangd.setup({
     on_attach = lsp_attach,
     capabilities = lsp_capabilities,
 })
