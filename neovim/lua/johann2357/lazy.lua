@@ -57,6 +57,7 @@ require('lazy').setup(
         'folke/zen-mode.nvim',
         -- look and feel
         -- 'dstein64/vim-startuptime',
+        'lewis6991/gitsigns.nvim',
         'nvim-tree/nvim-web-devicons',
         {
             'catppuccin/nvim',
