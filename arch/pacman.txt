@@ -75,3 +75,4 @@ helm
 minikube
 dosfstools
 tk
+freecad
