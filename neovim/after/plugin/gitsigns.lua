@@ -1,3 +1,15 @@
+local function set_highlight(group, color)
+    local hl_attrs = {
+        bg = nil,
+        fg = color,
+    }
+    vim.api.nvim_set_hl(0, group, hl_attrs)
+end
+
+set_highlight("GitSignsAdd", "#5b755f")
+set_highlight("GitSignsChange", "#897d73")
+set_highlight("GitSignsDelete", "#8a4f5b")
+
 require("gitsigns").setup {
     signs = {
         add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr" },
