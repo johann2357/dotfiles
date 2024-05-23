@@ -38,4 +38,4 @@ alias pacman='pacman --color auto'
 alias less='less -R'
 
 # update pacman mirrors
-alias update-mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup-$(date -Is) && sudo reflector --sort score --country US --save /etc/pacman.d/mirrorlist"
+alias update-mirrors="sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup-$(date -Iseconds) && sudo reflector --sort score --country US --save /etc/pacman.d/mirrorlist"

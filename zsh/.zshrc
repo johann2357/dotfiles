@@ -150,9 +150,12 @@ bindkey -M vicmd V edit-command-line
 # fzf stuff
 [[ -f /usr/share/fzf/completion.zsh ]] && . /usr/share/fzf/completion.zsh
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/local/opt/fzf/shell/completion.zsh ]] && . /usr/local/opt/fzf/shell/completion.zsh
+[[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]] && . /usr/local/opt/fzf/shell/key-bindings.zsh
 
 # syntax highlight
 [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # asdf
 [[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh

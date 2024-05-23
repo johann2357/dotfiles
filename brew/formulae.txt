@@ -6,6 +6,7 @@ fzf
 pipx
 bash
 zsh
+zsh-syntax-highlighting
 # Neovim
 cmake
 luarocks
