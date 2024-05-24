@@ -2,8 +2,10 @@
 
 rm -f ~/.zshrc
 rm -f ~/.zlogin
+rm -f ~/.zshrc-personal
 ln -s ~/Code/dotfiles/zsh/.zshrc ~/.zshrc
 ln -s ~/Code/dotfiles/zsh/.zlogin ~/.zlogin
+ln -s ~/Code/dotfiles/zsh/.zshrc-personal ~/.zshrc-personal
 
 # trying out not using ohmyzsh
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

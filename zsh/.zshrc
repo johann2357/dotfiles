@@ -23,6 +23,7 @@ PS1='%F{gray}[%* - %n@%m] %B%F{cyan}%~%b %F{gray}$(parse_git_branch) %F{#d5c4a1}
 
 # Alias
 [[ -f ~/.alias-personal ]] && . ~/.alias-personal
+[[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 # TODO: move to a file
 #       read https://thevaluable.dev/zsh-install-configure-mouseless/
@@ -36,6 +37,11 @@ setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
 setopt ALWAYS_TO_END
 setopt AUTO_PARAM_SLASH
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
 
 # +---------+
 # | zstyles |
@@ -165,3 +171,14 @@ bindkey -M vicmd V edit-command-line
 
 # Custom Linux stuff
 [[ -f ~/.zshrc-linux ]] && . ~/.zshrc-linux
+
+# tmux stuff
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tmux new-session -ADs 'main'
+  fi
+}
+
+ensure_tmux_is_running
