@@ -61,6 +61,7 @@ def create_window_name_widget() -> widget.WindowName:
 def parse_text_notify(text: str) -> str:
     logger.warning(f"[notify] Parsing text: `{text}`")
     text = re.sub(CLEAN_MARKUP_NOTIFY, "", text)
+    text = re.sub(r"\s+", " ", text.strip())
     max_chars = 69
     new_text = f"{text[:max_chars]}..." if len(text) > max_chars else text
     logger.warning(f"[notify] Displaying text of len `{len(text)}`: `{new_text}`")

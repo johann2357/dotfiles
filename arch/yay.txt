@@ -8,3 +8,5 @@ postman9-bin
 xscreensaver-arch-logo
 nordvpn-bin
 cider
+python-pulsectl-asyncio
+librewolf-bin

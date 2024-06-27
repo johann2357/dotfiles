@@ -3,6 +3,9 @@ import = ["/home/johann/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
 [env]
 TERM = "xterm-256color"
 
+[shell]
+program = "/bin/zsh"
+
 [font]
 size = 11.0
 

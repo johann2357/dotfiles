@@ -76,3 +76,9 @@ minikube
 dosfstools
 tk
 freecad
+unrar
+yt-dlp
+python-psutil
+python-dbus-next
+python-iwlib
+pinta

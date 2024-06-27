@@ -4,6 +4,7 @@ require('nvim-treesitter.configs').setup {
     "lua",
     "vim",
     "bash",
+    "go",
     "javascript",
     "yaml",
     "json",

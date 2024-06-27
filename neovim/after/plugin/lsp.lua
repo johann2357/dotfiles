@@ -7,6 +7,8 @@ mason_lspconfig.setup({
         "tsserver",
         "lua_ls",
         -- "rust_analyzer",
+        "gopls",
+        "htmx",
         "pylsp",
         "vuels",
         "yamlls",
@@ -166,6 +168,17 @@ lspconfig.texlab.setup({
 })
 
 lspconfig.clangd.setup({
+    on_attach = lsp_attach,
+    capabilities = lsp_capabilities,
+})
+
+
+lspconfig.gopls.setup({
+    on_attach = lsp_attach,
+    capabilities = lsp_capabilities,
+})
+
+lspconfig.htmx.setup({
     on_attach = lsp_attach,
     capabilities = lsp_capabilities,
 })
