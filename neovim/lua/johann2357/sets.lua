@@ -39,6 +39,9 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
+-- completion
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.shortmess:append("c")
 -- ignore stuff
 vim.opt.wildignore:append({
     '*.so',

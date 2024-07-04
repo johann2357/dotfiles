@@ -18,9 +18,9 @@ mason_lspconfig.setup({
     }
 })
 
+-- TODO: separate cmp and snippets to a separate file
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -58,23 +58,20 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-        ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+        ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
+        ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
     }),
-    sources = cmp.config.sources(
-        {
-            { name = "nvim_lsp" },
-            -- { name = "vsnip" }, -- For vsnip users.
-            { name = "luasnip" }, -- For luasnip users.
-            -- { name = "ultisnips" }, -- For ultisnips users.
-            -- { name = "snippy" }, -- For snippy users.
-        },
-        {
-            { name = "buffer" },
-        }
-    ),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "path" },
+        { name = "buffer" },
+        -- { name = "luasnip" }, -- For luasnip users.
+        -- { name = "vsnip" }, -- For vsnip users.
+        -- { name = "ultisnips" }, -- For ultisnips users.
+        -- { name = "snippy" }, -- For snippy users.
+    },
     formatting = {
        fields = { "abbr", "kind" },
        format = lspkind.cmp_format({
@@ -91,6 +88,24 @@ cmp.setup({
        })
     },
 })
+
+local ls = require("luasnip")
+ls.config.setup({
+    history = false,
+    updateevents = "TextChanged,TextChangedI",
+})
+
+vim.keymap.set({"i", "s"}, "<C-k>", function ()
+    if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+    end
+end, { silent = true })
+
+vim.keymap.set({"i", "s"}, "<C-j>", function ()
+    if ls.jumpable(-1) then
+        ls.jump(-1)
+    end
+end, { silent = true })
 
 local lspconfig = require("lspconfig")
 
