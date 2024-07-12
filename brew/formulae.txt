@@ -17,6 +17,7 @@ pkg-config
 htop
 tree
 # Work
+asdf
 awscli
 jq
 gcc
@@ -25,8 +26,10 @@ fd
 httpie
 # miniconda
 alacritty
+direnv
 # Cask
 homebrew/cask/amethyst
 homebrew/cask/aws-vault
 homebrew/cask/docker
 homebrew/cask/1password-cli
+homebrew/cask/librewolf

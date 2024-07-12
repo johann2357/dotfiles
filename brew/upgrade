@@ -3,7 +3,9 @@
 brew update
 grep -E "^-" formulae.txt | xargs -n 1 | grep -vE "^-" | xargs -L 1 brew reinstall
 
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+export NVIM_NIGHTLY_FILE_NAME=nvim-macos-x86_64
+curl -LO "https://github.com/neovim/neovim/releases/download/nightly/$NVIM_NIGHTLY_FILE_NAME.tar.gz"
 rm -rf /usr/local/opt/nvim-macos
-mv nvim-macos.tar.gz /usr/local/opt/
+mv "$NVIM_NIGHTLY_FILE_NAME.tar.gz" /usr/local/opt/nvim-macos.tar.gz
 cd /usr/local/opt/ && tar xzf nvim-macos.tar.gz
+mv "/usr/local/opt/$NVIM_NIGHTLY_FILE_NAME" /usr/local/opt/nvim-macos
